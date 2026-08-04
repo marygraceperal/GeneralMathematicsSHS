@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Topic 1.1.A: Salaries, Hourly Wages, Overtime & Commissions</title>
+    
+    <!-- MathJax Library to render LaTeX code ($...$ and $$...$$) -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
     <style>
         :root {
             --primary-color: #6a1b9a;      /* Deep Purple */
@@ -149,7 +160,7 @@
 
         th, td {
             border: 1px solid var(--border-color);
-            padding: 10px 12px;
+            padding: 12px;
             text-align: left;
         }
 
@@ -212,10 +223,10 @@
 
     <div class="example-box">
         <h4>📌 Example 1: Monthly & Weekly Earnings from Salary</h4>
-        <p><strong>Problem:</strong> An administrative assistant is hired with an annual salary of $₱360,000$. Calculate their (a) monthly wage and (b) weekly wage.</p>
+        <p><strong>Problem:</strong> An administrative assistant is hired with an annual salary of ₱360,000. Calculate their (a) monthly wage and (b) weekly wage.</p>
         <ol class="step-list">
-            <li><strong>Monthly Wage:</strong> $\frac{₱360,000}{12} = $ <span class="highlight-result">₱30,000.00</span></li>
-            <li><strong>Weekly Wage:</strong> $\frac{₱360,000}{52} = $ <span class="highlight-result">₱6,923.08</span></li>
+            <li><strong>Monthly Wage:</strong> $\frac{\text{₱360,000}}{12} = $ <span class="highlight-result">₱30,000.00</span></li>
+            <li><strong>Weekly Wage:</strong> $\frac{\text{₱360,000}}{52} = $ <span class="highlight-result">₱6,923.08</span></li>
         </ol>
     </div>
 
@@ -234,12 +245,12 @@
 
     <div class="example-box">
         <h4>📌 Example 2: Calculating Wages with Overtime</h4>
-        <p><strong>Problem:</strong> Maria earns an hourly rate of $₱120.00$. In a regular week, she worked 40 standard hours plus 6 hours of regular overtime (125% rate).</p>
+        <p><strong>Problem:</strong> Maria earns an hourly rate of ₱120.00. In a regular week, she worked 40 standard hours plus 6 hours of regular overtime (125% rate).</p>
         <ol class="step-list">
-            <li><strong>Regular Pay:</strong> $40 \text{ hrs} \times ₱120.00 = ₱4,800.00$</li>
-            <li><strong>Overtime Hourly Rate:</strong> $₱120.00 \times 1.25 = ₱150.00 / \text{hr}$</li>
-            <li><strong>Overtime Pay:</strong> $6 \text{ hrs} \times ₱150.00 = ₱900.00$</li>
-            <li><strong>Total Weekly Wage:</strong> $₱4,800.00 + ₱900.00 = $ <span class="highlight-result">₱5,700.00</span></li>
+            <li><strong>Regular Pay:</strong> $40 \text{ hrs} \times \text{₱120.00} = \text{₱4,800.00}$</li>
+            <li><strong>Overtime Hourly Rate:</strong> $\text{₱120.00} \times 1.25 = \text{₱150.00/hr}$</li>
+            <li><strong>Overtime Pay:</strong> $6 \text{ hrs} \times \text{₱150.00} = \text{₱900.00}$</li>
+            <li><strong>Total Weekly Wage:</strong> $\text{₱4,800.00} + \text{₱900.00} = $ <span class="highlight-result">₱5,700.00</span></li>
         </ol>
     </div>
 
@@ -256,13 +267,13 @@
 
     <div class="example-box">
         <h4>📌 Example 3: Comprehensive Gross Wage Calculation</h4>
-        <p><strong>Problem:</strong> Juan has a monthly basic salary of $₱22,000$. This month, he earned $₱2,400$ in overtime pay, received a $₱1,500$ monthly transportation allowance, and earned $₱3,200$ in sales commission. Calculate his total gross pay for the month.</p>
+        <p><strong>Problem:</strong> Juan has a monthly basic salary of ₱22,000. This month, he earned ₱2,400 in overtime pay, received a ₱1,500 monthly transportation allowance, and earned ₱3,200 in sales commission. Calculate his total gross pay for the month.</p>
         <ol class="step-list">
-            <li><strong>Basic Salary:</strong> $₱22,000.00$</li>
-            <li><strong>Overtime:</strong> $₱2,400.00$</li>
-            <li><strong>Allowance:</strong> $₱1,500.00$</li>
-            <li><strong>Commission:</strong> $₱3,200.00$</li>
-            <li><strong>Total Gross Wage:</strong> $₱22,000 + ₱2,400 + ₱1,500 + ₱3,200 = $ <span class="highlight-result">₱29,100.00</span></li>
+            <li><strong>Basic Salary:</strong> ₱22,000.00</li>
+            <li><strong>Overtime:</strong> ₱2,400.00</li>
+            <li><strong>Allowance:</strong> ₱1,500.00</li>
+            <li><strong>Commission:</strong> ₱3,200.00</li>
+            <li><strong>Total Gross Wage:</strong> $\text{₱22,000} + \text{₱2,400} + \text{₱1,500} + \text{₱3,200} = $ <span class="highlight-result">₱29,100.00</span></li>
         </ol>
     </div>
 
