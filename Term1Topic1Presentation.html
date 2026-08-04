@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.1.A - Salaries, Hourly Wages, Overtime & Commissions</title>
+
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/dracula.min.css" id="theme">
+
+    <style>
+        :root {
+            --purple-main: #9c27b0;
+            --purple-light: #e1bee7;
+            --card-bg: #282a36;
+            --accent-gold: #ffb74d;
+        }
+
+        .reveal h1, .reveal h2, .reveal h3 {
+            color: var(--purple-light);
+            text-transform: none;
+        }
+
+        .reveal .highlight {
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
+        .reveal .content-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 5px solid var(--purple-main);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+            margin-top: 15px;
+        }
+
+        .reveal .formula-box {
+            background: #44475a;
+            border: 1px solid var(--purple-light);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            color: #f8f8f2;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .reveal table {
+            width: 100%;
+            font-size: 0.75em;
+            margin-top: 10px;
+        }
+
+        .reveal th {
+            background-color: var(--purple-main);
+            color: white;
+        }
+
+        .reveal td, .reveal th {
+            border: 1px solid #6272a4;
+            padding: 8px;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Title Slide -->
+            <section data-transition="zoom">
+                <h2>📐 General Mathematics</h2>
+                <h3>Lesson 1.1.A: Salaries, Hourly Wages, Overtime & Commissions</h3>
+                <p style="font-size: 0.8em; opacity: 0.8;">Grade 11 • Term 1 • Week 1</p>
+            </section>
+
+            <!-- Learning Objectives -->
+            <section data-transition="slide">
+                <h3>🎯 Learning Objectives</h3>
+                <div class="content-box">
+                    <p>By the end of this session, you will be able to:</p>
+                    <ul>
+                        <li class="fragment fade-up"><strong>Cognitive:</strong> Differentiate between fixed salaries, hourly wages, overtime pay, and commissions.</li>
+                        <li class="fragment fade-up"><strong>Psychomotor:</strong> Compute total gross pay accurately given various workplace earning structures.</li>
+                        <li class="fragment fade-up"><strong>Affective:</strong> Evaluate job compensation models to make informed financial choices.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Concept 1: Salary vs. Wage -->
+            <section data-transition="fade">
+                <h3>1. Salary vs. Hourly Wage</h3>
+                <div class="grid-2col">
+                    <div class="content-box fragment fade-right">
+                        <h4 style="color: #ff79c6;">💼 Fixed Salary</h4>
+                        <p style="font-size: 0.8em;">A fixed periodic payment (e.g., monthly or bi-weekly) regardless of hours worked.</p>
+                        <div class="formula-box" style="font-size: 0.7em;">Gross = Fixed Rate</div>
+                    </div>
+                    <div class="content-box fragment fade-left">
+                        <h4 style="color: #8be9fd;">⏱️ Hourly Wage</h4>
+                        <p style="font-size: 0.8em;">Earnings based on the actual number of hours worked per pay period.</p>
+                        <div class="formula-box" style="font-size: 0.7em;">Gross = Hours × Hourly Rate</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Concept 2: Overtime Pay -->
+            <section data-transition="slide">
+                <h3>2. Overtime & Special Rates</h3>
+                <p style="font-size: 0.85em;">Work performed beyond standard daily/weekly hours is compensated at a higher multiplier.</p>
+                
+                <div class="formula-box fragment zoom-in">
+                    Overtime Pay = Regular Rate × OT Multiplier × OT Hours
+                </div>
+
+                <table class="fragment fade-up">
+                    <thead>
+                        <tr>
+                            <th>Work Scenario</th>
+                            <th>Standard Multiplier</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Regular Overtime (> 8 hrs/day)</td>
+                            <td><span class="highlight">125%</span> (1.25)</td>
+                        </tr>
+                        <tr>
+                            <td>Rest Day / Special Holiday</td>
+                            <td><span class="highlight">130%</span> (1.30)</td>
+                        </tr>
+                        <tr>
+                            <td>Regular Holiday</td>
+                            <td><span class="highlight">200%</span> (2.00)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Worked Example: Overtime -->
+            <section data-transition="convex">
+                <h3>✍️ Worked Example: Overtime</h3>
+                <div class="content-box" style="font-size: 0.8em;">
+                    <p><strong>Scenario:</strong> Maria earns a regular rate of ₱110.00/hr. She worked 40 regular hours and 6 overtime hours (150% multiplier) this week.</p>
+                </div>
+                
+                <div class="fragment fade-up content-box" style="font-size: 0.75em; background: #44475a;">
+                    <p><strong>Step 1: Compute Regular Earnings</strong><br>
+                    ₱110.00 × 40 hrs = <span class="highlight">₱4,400.00</span></p>
+                    
+                    <p class="fragment fade-up"><strong>Step 2: Compute Overtime Pay</strong><br>
+                    ₱110.00 × 1.5 × 6 hrs = <span class="highlight">₱990.00</span></p>
+                    
+                    <p class="fragment fade-up"><strong>Step 3: Total Gross Earnings</strong><br>
+                    ₱4,400.00 + ₱990.00 = <span class="highlight" style="font-size: 1.2em;">₱5,390.00</span></p>
+                </div>
+            </section>
+
+            <!-- Concept 3: Commissions -->
+            <section data-transition="slide">
+                <h3>3. Commission Models</h3>
+                <div class="content-box fragment fade-up">
+                    <h4>🏷️ Straight Commission</h4>
+                    <p style="font-size: 0.8em;">Earnings are directly proportional to total sales achieved.</p>
+                    <div class="formula-box" style="font-size: 0.7em;">Commission = Total Sales × Commission Rate</div>
+                </div>
+
+                <div class="content-box fragment fade-up" style="margin-top: 15px;">
+                    <h4>📈 Graduated (Tiered) Commission</h4>
+                    <p style="font-size: 0.8em;">Commission rates increase as sales hit higher milestone brackets.</p>
+                </div>
+            </section>
+
+            <!-- Worked Example: Graduated Commission -->
+            <section data-transition="concave">
+                <h3>✍️ Worked Example: Tiered Commission</h3>
+                <div class="content-box" style="font-size: 0.75em;">
+                    <p>Juan earned sales of <strong>₱220,000</strong> using this commission schedule:</p>
+                    <ul>
+                        <li>3% on the first ₱50,000</li>
+                        <li>5% on sales between ₱50,001 – ₱150,000</li>
+                        <li>8% on sales over ₱150,000</li>
+                    </ul>
+                </div>
+
+                <div class="fragment fade-up content-box" style="font-size: 0.7em; background: #44475a;">
+                    <p><strong>Breakdown:</strong></p>
+                    <ul>
+                        <li>Tier 1: ₱50,000 × 0.03 = <strong>₱1,500</strong></li>
+                        <li class="fragment fade-up">Tier 2: ₱100,000 × 0.05 = <strong>₱5,000</strong></li>
+                        <li class="fragment fade-up">Tier 3: ₱70,000 × 0.08 = <strong>₱5,600</strong></li>
+                    </ul>
+                    <p class="fragment fade-up" style="margin-top: 10px; text-align: center;">
+                        <strong>Total Commission:</strong> <span class="highlight" style="font-size: 1.2em;">₱12,100.00</span>
+                    </p>
+                </div>
+            </section>
+
+            <!-- Interactive Practice -->
+            <section data-transition="zoom">
+                <h3>🧠 Quick Check</h3>
+                <div class="content-box">
+                    <p style="font-size: 0.85em;">An employee worked an 8-hour shift on a regular holiday (200% rate). If their daily base rate is ₱600.00, what is their gross pay for that day?</p>
+                </div>
+
+                <div class="fragment fade-up" style="margin-top: 20px;">
+                    <p style="font-size: 0.9em;">Answer: <span class="highlight">₱1,200.00</span></p>
+                    <p style="font-size: 0.7em; opacity: 0.8;">(₱600.00 × 200% multiplier)</p>
+                </div>
+            </section>
+
+            <!-- Conclusion / Wrap Up -->
+            <section data-transition="slide">
+                <h3>📌 Key Takeaways</h3>
+                <div class="content-box" style="font-size: 0.85em;">
+                    <ul>
+                        <li class="fragment fade-up">Gross pay accounts for base earnings before deductions.</li>
+                        <li class="fragment fade-up">Overtime rates depend on the work day classification (regular day vs. rest day vs. holiday).</li>
+                        <li class="fragment fade-up">Commission models incentivize higher performance through flat or graduated percentages.</li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            center: true,
+            hash: true,
+            transition: 'slide'
+        });
+    </script>
+</body>
+</html>
