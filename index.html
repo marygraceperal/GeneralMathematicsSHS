@@ -6,14 +6,16 @@
     <title>Grade 11 General Mathematics - Interactive BOW</title>
     <style>
         :root {
-            --primary-color: #0056b3;
-            --secondary-color: #eef5ff;
-            --border-color: #cccccc;
-            --text-color: #333333;
-            --link-color: #0056b3;
-            --link-hover: #003e80;
-            --btn-bg: #eef4ff;
-            --btn-border: #b8d4fe;
+            --primary-color: #6a1b9a;      /* Deep Purple */
+            --primary-hover: #4a148c;      /* Darker Purple */
+            --secondary-color: #f3e5f5;    /* Soft Lavender */
+            --accent-color: #8e24aa;       /* Medium Purple */
+            --border-color: #e0e0e0;
+            --text-color: #2c2c2c;
+            --link-color: #6a1b9a;
+            --link-hover: #4a148c;
+            --btn-bg: #f3e5f5;
+            --btn-border: #ce93d8;
         }
 
         body {
@@ -21,7 +23,7 @@
             line-height: 1.6;
             color: var(--text-color);
             margin: 20px;
-            background-color: #f9f9f9;
+            background-color: #faf7fc;
         }
 
         h1 {
@@ -41,12 +43,13 @@
         .tab-container {
             display: flex;
             justify-content: center;
-            border-bottom: 2px solid var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
             margin-bottom: 20px;
         }
 
         .tab-button {
-            background-color: #e0e0e0;
+            background-color: #e1d5e7;
+            color: #4a148c;
             border: none;
             outline: none;
             padding: 12px 24px;
@@ -57,10 +60,13 @@
             border-top-left-radius: 8px;
             border-top-right-radius: 8px;
             margin: 0 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .tab-button:hover {
-            background-color: #d0d0d0;
+            background-color: #d1c4e9;
         }
 
         .tab-button.active {
@@ -74,7 +80,7 @@
             background-color: white;
             padding: 25px;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(106, 27, 154, 0.08);
         }
 
         .tab-content.active {
@@ -97,15 +103,18 @@
 
         .standard-card {
             background-color: var(--secondary-color);
-            padding: 15px 20px;
+            padding: 18px 20px;
             border-left: 5px solid var(--primary-color);
-            border-radius: 4px;
+            border-radius: 6px;
         }
 
         .standard-card h3 {
             margin-top: 0;
             color: var(--primary-color);
             font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         /* Tables */
@@ -129,22 +138,22 @@
         }
 
         tr:nth-child(even) {
-            background-color: #f2f7fc;
+            background-color: #fcf8ff;
         }
 
         .week-col {
-            width: 7%;
+            width: 8%;
             text-align: center;
             font-weight: bold;
         }
 
         .domain-col {
-            width: 20%;
+            width: 22%;
             font-weight: 600;
         }
 
         .competency-col {
-            width: 73%;
+            width: 70%;
         }
 
         /* Links and Activity Icons */
@@ -154,21 +163,25 @@
         }
 
         li {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .subtopic-item {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
             gap: 10px;
         }
 
         .subtopic-link {
             color: var(--link-color);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 0.98em;
             transition: color 0.2s, text-decoration 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .subtopic-link:hover {
@@ -180,20 +193,21 @@
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            padding: 3px 8px;
+            padding: 4px 10px;
             font-size: 0.82em;
-            color: #0056b3;
+            color: var(--primary-color);
             background-color: var(--btn-bg);
             border: 1px solid var(--btn-border);
             border-radius: 4px;
             text-decoration: none;
             white-space: nowrap;
+            font-weight: 600;
             transition: background-color 0.2s, border-color 0.2s;
         }
 
         .activity-btn:hover {
-            background-color: #dbe8ff;
-            border-color: #8bb8fe;
+            background-color: #e1bee7;
+            border-color: #ab47bc;
             text-decoration: none;
         }
 
@@ -205,19 +219,21 @@
 </head>
 <body>
 
-    <h1>General Mathematics (Grade 11)</h1>
-    <div class="subtitle">Interactive Three-Term Budget of Work with Activity Links</div>
+    <h1>📐 General Mathematics (Grade 11)</h1>
+    <div class="subtitle">Interactive Three-Term Budget of Work with Subtopic Titles</div>
 
+    <!-- Tab Buttons -->
     <div class="tab-container">
-        <button class="tab-button active" onclick="openTerm(event, 'term1')">First Term</button>
-        <button class="tab-button" onclick="openTerm(event, 'term2')">Second Term</button>
-        <button class="tab-button" onclick="openTerm(event, 'term3')">Third Term</button>
+        <button class="tab-button active" onclick="openTerm(event, 'term1')">🗓️ First Term</button>
+        <button class="tab-button" onclick="openTerm(event, 'term2')">🗓️ Second Term</button>
+        <button class="tab-button" onclick="openTerm(event, 'term3')">🗓️ Third Term</button>
     </div>
 
+    <!-- FIRST TERM -->
     <div id="term1" class="tab-content active">
         <div class="standards-container">
             <div class="standard-card">
-                <h3>Content Standard</h3>
+                <h3>🧠 Content Standard</h3>
                 <p>The learners should have knowledge and understanding of:</p>
                 <ul>
                     <li>Business and finance through problems involving earning money, buying, and selling</li>
@@ -228,7 +244,7 @@
                 </ul>
             </div>
             <div class="standard-card">
-                <h3>Performance Standard</h3>
+                <h3>🎯 Performance Standard</h3>
                 <p>By the end of the term, the learners are able to:</p>
                 <ul>
                     <li>Prepare accurate payrolls and digital payslips with correct gross pay, deductions, and net income.</li>
@@ -243,7 +259,7 @@
                 <tr>
                     <th class="week-col">Week</th>
                     <th class="domain-col">Domain / Unit</th>
-                    <th class="competency-col">Learning Competencies & Subtopics</th>
+                    <th class="competency-col">Subtopic Titles</th>
                 </tr>
             </thead>
             <tbody>
@@ -254,20 +270,20 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Calculate weekly or monthly wages from an annual salary, wages from an hourly rate, including overtime & allowances.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">💵 Salaries, Hourly Wages, Overtime & Commissions</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Apply a percentage increase or decrease in various contexts:</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">📊 Percentage Applications in Business:</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                                 <ul class="sub-list">
-                                    <li><a href="#" class="subtopic-link">Determining the impact of inflation on costs and wages over time</a></li>
-                                    <li><a href="#" class="subtopic-link">Calculating percentage mark-ups and discounts</a></li>
-                                    <li><a href="#" class="subtopic-link">Calculating Value-Added Tax (VAT)</a></li>
-                                    <li><a href="#" class="subtopic-link">Calculating profit or loss in both absolute and percentage terms</a></li>
+                                    <li><a href="#" class="subtopic-link">📈 Inflation Impact on Costs and Wages</a></li>
+                                    <li><a href="#" class="subtopic-link">🏷️ Mark-ups and Discounts</a></li>
+                                    <li><a href="#" class="subtopic-link">🧾 Value-Added Tax (VAT) Computations</a></li>
+                                    <li><a href="#" class="subtopic-link">⚖️ Profit and Loss Calculations</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -280,8 +296,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Solve problems involving salaries, wages, benefits, and deductions using appropriate technology.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">💳 Payroll, Tax Computations & Net Income Solutions</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -294,20 +310,14 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Describe patterns by inspection, including patterns in art and nature.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">🌀 Pattern Recognition & The Fibonacci Sequence</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Determine the next term of a given pattern, including the Fibonacci sequence.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Illustrate attributes of and solve problems involving arithmetic and geometric sequences.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">🔢 Arithmetic and Geometric Sequences</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -320,14 +330,14 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Differentiate sequences from series and represent using sigma notation.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">∑ Sequences vs. Series & Sigma Notation</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Find the sum and solve problems involving arithmetic and geometric series.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">➕ Sums of Arithmetic and Geometric Series</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -340,8 +350,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Apply sequences and series to solve financial problems (loans, mortgages, accumulated investments).</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">🏦 Financial Applications of Series (Loans & Investments)</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -354,8 +364,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Determine appropriate metric units and convert measurements within and between systems.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">📏 Metric Units & Conversion Systems</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -368,8 +378,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Determine surface area and volume of 3D objects (prisms, pyramids, cylinders, cones, spheres).</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">📦 Surface Area and Volume of 3D Objects</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -382,8 +392,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Use scales on maps/blueprints, currency conversion, and real-world time conversions.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">🗺️ Map Scales, Currency Conversions & Time Conversions</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -396,8 +406,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Apply temperature conversions and classify functions based on graphs or equations.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">🌡️ Temperature Conversions & Function Classifications</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -410,8 +420,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Sketch graphs of linear, absolute value, quadratic, square root, and cube root functions.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">📈 Graphing and Modeling Functions in Real Life</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -421,14 +431,15 @@
         </table>
     </div>
 
+    <!-- SECOND TERM -->
     <div id="term2" class="tab-content">
         <div class="standards-container">
             <div class="standard-card">
-                <h3>Content Standard</h3>
+                <h3>🧠 Content Standard</h3>
                 <p>The learners should have knowledge and understanding of piecewise functions, statistical variables, basic trigonometry, and random variables.</p>
             </div>
             <div class="standard-card">
-                <h3>Performance Standard</h3>
+                <h3>🎯 Performance Standard</h3>
                 <p>By the end of the term, learners model real-world problems with piecewise functions, analyze data with technology, and construct 3D geometric objects.</p>
             </div>
         </div>
@@ -438,7 +449,7 @@
                 <tr>
                     <th class="week-col">Week</th>
                     <th class="domain-col">Domain / Unit</th>
-                    <th class="competency-col">Learning Competencies & Subtopics</th>
+                    <th class="competency-col">Subtopic Titles</th>
                 </tr>
             </thead>
             <tbody>
@@ -449,8 +460,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Illustrate piecewise functions in practical contexts (fare rates, purchasing, income tax) and solve problems.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">🧩 Piecewise Functions in Real-World Contexts</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -463,8 +474,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Classify data types/levels and compute central tendency & variability using Excel/GeoGebra.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">💻 Data Classification & Technology-Based Descriptive Statistics</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -477,8 +488,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Illustrate trigonometric ratios in right triangles and area of oblique triangles (Heron's Formula).</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">📐 Trigonometric Ratios & Area of Oblique Triangles</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -491,8 +502,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Solve practical problems involving angles of elevation/depression and navigation bearings.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">🧭 Angles of Elevation/Depression & Navigation Bearings</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -505,8 +516,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Estimate distances, perimeter, and area of residential spaces (renovations/layouts).</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">🏠 Perimeter, Area & Spatial Estimation</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -519,8 +530,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Calculate 3D object volume/capacity and apply volume calculations to cost estimation.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">🛢️ Volume, Capacity & Practical Cost Estimation</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -533,8 +544,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Differentiate discrete/continuous random variables and calculate expected value, variance, and SD.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">🎲 Discrete vs. Continuous Random Variables & Variance</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -547,8 +558,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Illustrate normal random variables and convert to standard normal variables (z-scores).</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">🔔 Normal Random Variables & Z-Score Transformations</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -561,8 +572,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Compute probabilities/percentiles involving standard normal distribution using Z-tables or tech.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">📊 Normal Distribution Probabilities & Percentiles</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -575,8 +586,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Illustrate random sampling, sample size calculation, and probability/nonprobability techniques.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">🎯 Random Sampling, Sample Size & Sampling Techniques</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -586,14 +597,15 @@
         </table>
     </div>
 
+    <!-- THIRD TERM -->
     <div id="term3" class="tab-content">
         <div class="standards-container">
             <div class="standard-card">
-                <h3>Content Standard</h3>
+                <h3>🧠 Content Standard</h3>
                 <p>Knowledge of compound interest, simple/general annuities, loans, hypothesis testing, linear regression, and logical propositions.</p>
             </div>
             <div class="standard-card">
-                <h3>Performance Standard</h3>
+                <h3>🎯 Performance Standard</h3>
                 <p>Develop digital financial proposals, conduct data investigations with statistical tests, and evaluate logical propositions and truth values.</p>
             </div>
         </div>
@@ -603,7 +615,7 @@
                 <tr>
                     <th class="week-col">Week</th>
                     <th class="domain-col">Domain / Unit</th>
-                    <th class="competency-col">Learning Competencies & Subtopics</th>
+                    <th class="competency-col">Subtopic Titles</th>
                 </tr>
             </thead>
             <tbody>
@@ -614,8 +626,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Solve problems involving compound interest, maturity value, nominal rates, and number of terms.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">📈 Compound Interest Computations & Loan Terms</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -628,8 +640,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Illustrate simple, general, and deferred annuities and solve corresponding problems.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">📅 Simple, General, and Deferred Annuities</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -642,8 +654,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Calculate the fair market value of a cash flow stream that includes an annuity.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">💰 Fair Market Value of Cash Flows</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -656,8 +668,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Differentiate business and consumer loans and solve amortization/mortgage problems.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">🏢 Business vs. Consumer Loans & Amortization</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -670,8 +682,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Formulate null/alternative hypotheses, significance levels, and identify Type I/II errors.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">🧪 Fundamentals of Hypothesis Testing (Null/Alternative & Errors)</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -684,8 +696,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Test hypotheses for population means using z-test, one-sample t-test, and paired/independent t-tests.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">🔬 Hypothesis Testing for Population Means (Z-test & T-tests)</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -698,8 +710,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Construct scatter plots, line of best fit, and calculate Pearson's r correlation.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">📉 Scatter Plots, Line of Best Fit & Pearson’s r Correlation</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -712,8 +724,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Identify logical propositions and differentiate simple from compound propositions.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">💡 Simple and Compound Logical Propositions</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -726,8 +738,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Illustrate basic logical operations and conditional proposition forms.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">🔀 Logical Operations & Conditional Statements</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
@@ -740,8 +752,8 @@
                         <ul>
                             <li>
                                 <div class="subtopic-item">
-                                    <a href="#" class="subtopic-link">Illustrate tautologies, contradictions, and determine truth values in practical situations.</a>
-                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📄 Activity Sheet</a>
+                                    <a href="#" class="subtopic-link">✔️ Tautologies, Contradictions & Truth Values</a>
+                                    <a href="#" class="activity-btn" title="Open Activity Sheet">📝 Activity Sheet</a>
                                 </div>
                             </li>
                         </ul>
