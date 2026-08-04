@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 1.1.A: Salaries, Hourly Wages, Overtime & Commissions</title>
+    <style>
+        :root {
+            --primary-color: #6a1b9a;      /* Deep Purple */
+            --primary-hover: #4a148c;      /* Darker Purple */
+            --secondary-color: #f3e5f5;    /* Soft Lavender */
+            --accent-color: #8e24aa;       /* Medium Purple */
+            --border-color: #e0e0e0;
+            --text-color: #2c2c2c;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            background-color: #faf7fc;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(106, 27, 154, 0.08);
+        }
+
+        .header-badge {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .competency-box {
+            background-color: #f3e5f5;
+            border-left: 5px solid var(--primary-color);
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+
+        .competency-box h3 {
+            margin: 0 0 5px 0;
+            color: var(--primary-color);
+            font-size: 1.05em;
+        }
+
+        .competency-box p {
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 8px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .formula-card {
+            background-color: #fcf8ff;
+            border: 1px dashed var(--accent-color);
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+
+        .formula-card h4 {
+            margin: 0 0 10px 0;
+            color: var(--primary-hover);
+        }
+
+        .formula-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 15px;
+        }
+
+        .formula-item {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .example-box {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-top: 4px solid var(--accent-color);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+
+        .example-box h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .step-list {
+            padding-left: 20px;
+        }
+
+        .step-list li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-result {
+            background-color: #e1bee7;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: var(--primary-hover);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fcf8ff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <span class="header-badge">Term 1 • Week 1 • Code: 1.1.A</span>
+    <h1>💵 Salaries, Hourly Wages, Overtime & Commissions</h1>
+
+    <div class="competency-box">
+        <h3>🎯 Learning Competency</h3>
+        <p>Calculate weekly or monthly wages from an annual salary, wages from an hourly rate, including overtime & allowances.</p>
+    </div>
+
+    <!-- SECTION 1: ANNUAL SALARY CONVERSIONS -->
+    <div class="section-title">1. Converting Annual Salary to Pay Period Earnings</div>
+    <p>A <strong>salary</strong> is a fixed payment made by an employer to an employee, typically specified as an annual amount regardless of the hours worked. To compute gross earnings per pay cycle, divide the annual salary by the total number of pay periods in a year.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Pay Frequency</th>
+                <th>Periods Per Year ($n$)</th>
+                <th>Conversion Formula</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Weekly</strong></td>
+                <td>52</td>
+                <td>$\text{Weekly Pay} = \frac{\text{Annual Salary}}{52}$</td>
+            </tr>
+            <tr>
+                <td><strong>Bi-weekly</strong> (Every 2 weeks)</td>
+                <td>26</td>
+                <td>$\text{Bi-weekly Pay} = \frac{\text{Annual Salary}}{26}$</td>
+            </tr>
+            <tr>
+                <td><strong>Semi-monthly</strong> (Twice a month)</td>
+                <td>24</td>
+                <td>$\text{Semi-monthly Pay} = \frac{\text{Annual Salary}}{24}$</td>
+            </tr>
+            <tr>
+                <td><strong>Monthly</strong></td>
+                <td>12</td>
+                <td>$\text{Monthly Pay} = \frac{\text{Annual Salary}}{12}$</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="example-box">
+        <h4>📌 Example 1: Monthly & Weekly Earnings from Salary</h4>
+        <p><strong>Problem:</strong> An administrative assistant is hired with an annual salary of $₱360,000$. Calculate their (a) monthly wage and (b) weekly wage.</p>
+        <ol class="step-list">
+            <li><strong>Monthly Wage:</strong> $\frac{₱360,000}{12} = $ <span class="highlight-result">₱30,000.00</span></li>
+            <li><strong>Weekly Wage:</strong> $\frac{₱360,000}{52} = $ <span class="highlight-result">₱6,923.08</span></li>
+        </ol>
+    </div>
+
+    <!-- SECTION 2: HOURLY WAGES & OVERTIME -->
+    <div class="section-title">2. Hourly Wages and Overtime Rates</div>
+    <p>An <strong>hourly wage</strong> is paid based on the actual hours worked. Standard work schedules typically mandate 8 hours per day or 40 hours per week. Any hours worked beyond standard hours are classified as <strong>overtime (OT)</strong> and compensated at a higher multiplier rate.</p>
+
+    <div class="formula-card">
+        <h4>🔑 Overtime Rate Multipliers</h4>
+        <div class="formula-grid">
+            <div class="formula-item">Regular OT = 1.25 × Hourly Rate</div>
+            <div class="formula-item">Rest Day / Special Day OT = 1.30 × Hourly Rate</div>
+            <div class="formula-item">Regular Holiday OT = 2.00 × Hourly Rate</div>
+        </div>
+    </div>
+
+    <div class="example-box">
+        <h4>📌 Example 2: Calculating Wages with Overtime</h4>
+        <p><strong>Problem:</strong> Maria earns an hourly rate of $₱120.00$. In a regular week, she worked 40 standard hours plus 6 hours of regular overtime (125% rate).</p>
+        <ol class="step-list">
+            <li><strong>Regular Pay:</strong> $40 \text{ hrs} \times ₱120.00 = ₱4,800.00$</li>
+            <li><strong>Overtime Hourly Rate:</strong> $₱120.00 \times 1.25 = ₱150.00 / \text{hr}$</li>
+            <li><strong>Overtime Pay:</strong> $6 \text{ hrs} \times ₱150.00 = ₱900.00$</li>
+            <li><strong>Total Weekly Wage:</strong> $₱4,800.00 + ₱900.00 = $ <span class="highlight-result">₱5,700.00</span></li>
+        </ol>
+    </div>
+
+    <!-- SECTION 3: ALLOWANCES & GROSS EARNINGS -->
+    <div class="section-title">3. Allowances & Gross Earnings</div>
+    <p><strong>Allowances</strong> are supplemental monetary benefits provided to cover job-related expenses (e.g., transportation, meal, or communication allowances). Gross wage is the total sum of all earnings before statutory or voluntary deductions.</p>
+
+    <div class="formula-card">
+        <h4>📐 Total Gross Wage Formula</h4>
+        <p style="margin:0; font-weight:bold; color:var(--primary-hover);">
+            $\text{Gross Wage} = \text{Basic Pay} + \text{Overtime Pay} + \text{Allowances} + \text{Commissions}$
+        </p>
+    </div>
+
+    <div class="example-box">
+        <h4>📌 Example 3: Comprehensive Gross Wage Calculation</h4>
+        <p><strong>Problem:</strong> Juan has a monthly basic salary of $₱22,000$. This month, he earned $₱2,400$ in overtime pay, received a $₱1,500$ monthly transportation allowance, and earned $₱3,200$ in sales commission. Calculate his total gross pay for the month.</p>
+        <ol class="step-list">
+            <li><strong>Basic Salary:</strong> $₱22,000.00$</li>
+            <li><strong>Overtime:</strong> $₱2,400.00$</li>
+            <li><strong>Allowance:</strong> $₱1,500.00$</li>
+            <li><strong>Commission:</strong> $₱3,200.00$</li>
+            <li><strong>Total Gross Wage:</strong> $₱22,000 + ₱2,400 + ₱1,500 + ₱3,200 = $ <span class="highlight-result">₱29,100.00</span></li>
+        </ol>
+    </div>
+
+</div>
+
+</body>
+</html>
