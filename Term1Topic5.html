@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Sheet: Financial Applications of Series</title>
+    <!-- MathJax for Mathematical Formatting -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="mathjax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --primary-color: #5e35b1;
+            --primary-light: #ede7f6;
+            --secondary-color: #3949ab;
+            --text-dark: #2c3e50;
+            --bg-light: #f8f9fa;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --accent-green: #2e7d32;
+            --accent-green-bg: #e8f5e9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        header {
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+            font-size: 1.8em;
+        }
+
+        .instructions-box {
+            background-color: var(--primary-light);
+            border-left: 5px solid var(--primary-color);
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .guide-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0 25px 0;
+            font-size: 0.9em;
+        }
+
+        .guide-table th, .guide-table td {
+            border: 1px solid #cccccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .guide-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .problem-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-top: 4px solid var(--secondary-color);
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+        }
+
+        .problem-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .answer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .method-box {
+            background: #f9f9f9;
+            border: 1px dashed #bbb;
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        .method-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        /* Live Calculator Widget */
+        .calc-widget {
+            background-color: #ffffff;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .calc-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .calc-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .calc-group label {
+            font-size: 0.85em;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 4px;
+        }
+
+        .calc-group input, .calc-group select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .calc-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            font-size: 0.95em;
+            transition: background 0.2s;
+        }
+
+        .calc-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .calc-result {
+            margin-top: 15px;
+            background-color: var(--accent-green-bg);
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Secured Answer Key Styles */
+        .answer-key-section {
+            margin-top: 40px;
+            background: #ffffff;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .passcode-box {
+            display: flex;
+            gap: 10px;
+            max-width: 400px;
+            margin: 15px 0;
+        }
+
+        .passcode-box input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1em;
+        }
+
+        .key-content {
+            display: none;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px dashed var(--primary-color);
+        }
+
+        .error-msg {
+            color: #d32f2f;
+            font-weight: bold;
+            display: none;
+            margin-top: 5px;
+        }
+
+        code {
+            background-color: #eee;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+            color: #c7254e;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>📝 Activity Sheet: Financial Applications of Series</h1>
+        <p style="margin: 0; color: #555;">Grade 11 General Mathematics — Annuities, Loans & Investments</p>
+    </header>
+
+    <div class="instructions-box">
+        <strong>📋 General Instructions:</strong>
+        <ol style="margin-bottom: 0; padding-left: 20px;">
+            <li>Solve each problem using two approaches: <strong>Calculator Formula Method</strong> and <strong>Spreadsheet Function Method (Excel / Google Sheets)</strong>.</li>
+            <li>Use the reference guide below for spreadsheet formulas.</li>
+            <li>Use the <strong>Live Practice Verification Calculator</strong> embedded below to double-check your final results!</li>
+        </ol>
+    </div>
+
+    <!-- REFERENCE GUIDE TABLE -->
+    <h3 style="color: var(--secondary-color);">📖 Quick Reference: Formulas & Spreadsheet Instructions</h3>
+    <table class="guide-table">
+        <thead>
+            <tr>
+                <th>Target Value</th>
+                <th>Mathematical / Calculator Formula</th>
+                <th>Spreadsheet Function (Excel / Google Sheets)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Future Value (\(F\))</strong><br>(Savings/Investments)</td>
+                <td>\[ F = R \left[ \frac{(1 + i)^n - 1}{i} \right] \]</td>
+                <td><code>=FV(rate_per_period, nper, -pmt)</code><br><em>Example:</em> <code>=FV(0.06/12, 36, -5000)</code></td>
+            </tr>
+            <tr>
+                <td><strong>Present Value (\(P\))</strong><br>(Loan Principal)</td>
+                <td>\[ P = R \left[ \frac{1 - (1 + i)^{-n}}{i} \right] \]</td>
+                <td><code>=PV(rate_per_period, nper, -pmt)</code><br><em>Example:</em> <code>=PV(0.08/12, 24, -12000)</code></td>
+            </tr>
+            <tr>
+                <td><strong>Periodic Payment (\(R\))</strong><br>(Loan Repayment)</td>
+                <td>\[ R = \frac{P \cdot i}{1 - (1 + i)^{-n}} \]</td>
+                <td><code>=PMT(rate_per_period, nper, -pv)</code><br><em>Example:</em> <code>=PMT(0.09/4, 20, -500000)</code></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- LIVE INTERACTIVE CALCULATOR -->
+    <div class="calc-widget">
+        <div class="calc-title">🧮 Embedded Live Verification Calculator</div>
+        <div class="calc-grid">
+            <div class="calc-group">
+                <label>Target Calculation:</label>
+                <select id="calc_type">
+                    <option value="FV">Future Value (F)</option>
+                    <option value="PV">Present Value (P)</option>
+                    <option value="PMT">Required Payment (R)</option>
+                </select>
+            </div>
+            <div class="calc-group">
+                <label>Amount (₱):</label>
+                <input type="number" id="calc_amount" placeholder="e.g. 2500">
+            </div>
+            <div class="calc-group">
+                <label>Annual Rate (\(r\) %):</label>
+                <input type="number" id="calc_rate" placeholder="e.g. 6" step="0.1">
+            </div>
+            <div class="calc-group">
+                <label>Frequency (\(m\)):</label>
+                <select id="calc_m">
+                    <option value="12">Monthly (12)</option>
+                    <option value="4">Quarterly (4)</option>
+                    <option value="2">Semi-Annually (2)</option>
+                    <option value="1">Annually (1)</option>
+                </select>
+            </div>
+            <div class="calc-group">
+                <label>Time (\(t\) in Years):</label>
+                <input type="number" id="calc_years" placeholder="e.g. 5">
+            </div>
+        </div>
+        <button class="calc-btn" onclick="runActivityCalculator()">Verify Answer</button>
+        <div class="calc-result" id="activity_calc_result">Enter values above and click 'Verify Answer'</div>
+    </div>
+
+    <!-- EXERCISE 1 -->
+    <div class="problem-card">
+        <div class="problem-title">Task 1: Future Value of Investment (10 Points)</div>
+        <p><strong>Problem Scenario:</strong> Liza sets up an emergency fund by depositing <strong>₱3,500</strong> at the end of every month into an account paying <strong>5% interest per annum compounded monthly</strong>. How much will be in her account after <strong>4 years</strong>?</p>
+        
+        <div class="answer-grid">
+            <div class="method-box">
+                <div class="method-title">A. Calculator Formula Solution</div>
+                <p><strong>1. Identify variables:</strong><br>
+                \(R\) = _________, \(i = \frac{r}{m}\) = _________, \(n = m \times t\) = _________</p>
+                <p><strong>2. Formula Substitution & Calculation:</strong><br><br><br><br></p>
+                <p><strong>Final Answer (₱):</strong> _____________________</p>
+            </div>
+            <div class="method-box">
+                <div class="method-title">B. Spreadsheet Formula Solution</div>
+                <p>Write the exact formula/syntax you would enter into Excel or Google Sheets cell:</p>
+                <p style="margin-top: 25px;"><code>=FV( ____________, ____________, ____________ )</code></p>
+                <p style="margin-top: 40px;"><strong>Spreadsheet Output (₱):</strong><br>_____________________</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- EXERCISE 2 -->
+    <div class="problem-card">
+        <div class="problem-title">Task 2: Loan Principal / Present Value (10 Points)</div>
+        <p><strong>Problem Scenario:</strong> Mark agrees to pay <strong>₱8,000</strong> at the end of every quarter for <strong>3 years</strong> to fully pay off a motorcycle loan. If the financing rate is <strong>10% compounded quarterly</strong>, what was the original price/present value of the motorcycle?</p>
+        
+        <div class="answer-grid">
+            <div class="method-box">
+                <div class="method-title">A. Calculator Formula Solution</div>
+                <p><strong>1. Identify variables:</strong><br>
+                \(R\) = _________, \(i = \frac{r}{m}\) = _________, \(n = m \times t\) = _________</p>
+                <p><strong>2. Formula Substitution & Calculation:</strong><br><br><br><br></p>
+                <p><strong>Final Answer (₱):</strong> _____________________</p>
+            </div>
+            <div class="method-box">
+                <div class="method-title">B. Spreadsheet Formula Solution</div>
+                <p>Write the exact formula/syntax you would enter into Excel or Google Sheets cell:</p>
+                <p style="margin-top: 25px;"><code>=PV( ____________, ____________, ____________ )</code></p>
+                <p style="margin-top: 40px;"><strong>Spreadsheet Output (₱):</strong><br>_____________________</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- EXERCISE 3 -->
+    <div class="problem-card">
+        <div class="problem-title">Task 3: Determining Required Loan Repayment (10 Points)</div>
+        <p><strong>Problem Scenario:</strong> A cooperative bakery wants to borrow <strong>₱350,000</strong> to purchase a commercial oven. The bank offers a <strong>4-year loan</strong> at <strong>6% interest compounded monthly</strong>. What will be the required monthly repayment amount (\(R\))?</p>
+        
+        <div class="answer-grid">
+            <div class="method-box">
+                <div class="method-title">A. Calculator Formula Solution</div>
+                <p><strong>1. Identify variables:</strong><br>
+                \(P\) = _________, \(i = \frac{r}{m}\) = _________, \(n = m \times t\) = _________</p>
+                <p><strong>2. Formula Substitution & Calculation:</strong><br><br><br><br></p>
+                <p><strong>Final Answer (₱):</strong> _____________________</p>
+            </div>
+            <div class="method-box">
+                <div class="method-title">B. Spreadsheet Formula Solution</div>
+                <p>Write the exact formula/syntax you would enter into Excel or Google Sheets cell:</p>
+                <p style="margin-top: 25px;"><code>=PMT( ____________, ____________, ____________ )</code></p>
+                <p style="margin-top: 40px;"><strong>Spreadsheet Output (₱):</strong><br>_____________________</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECURED TEACHER ANSWER KEY SECTION -->
+    <div class="answer-key-section">
+        <h3 style="color: var(--primary-color); margin-top: 0;">🔒 Secured Teacher Answer Key</h3>
+        <p style="font-size: 0.9em; color: #555;">Enter the passcode to unlock the step-by-step solutions and spreadsheet functions.</p>
+        
+        <div class="passcode-box">
+            <input type="password" id="passcode_input" placeholder="Enter Passcode">
+            <button class="calc-btn" style="width: auto;" onclick="unlockAnswerKey()">Unlock</button>
+        </div>
+        <div class="error-msg" id="passcode_error">Incorrect passcode. Access denied.</div>
+
+        <div class="key-content" id="key_content">
+            <h4 style="color: var(--secondary-color);">Task 1 Solutions:</h4>
+            <ul>
+                <li><strong>Variables:</strong> \(R = 3,500\), \(i = \frac{0.05}{12} \approx 0.004167\), \(n = 12 \times 4 = 48\)</li>
+                <li><strong>Calculator Formula:</strong> \(F = 3500 \left[\frac{(1 + 0.004167)^{48} - 1}{0.004167}\right] = \mathbf{\text{₱}185,555.23}\)</li>
+                <li><strong>Spreadsheet Formula:</strong> <code>=FV(0.05/12, 48, -3500)</code> \(\rightarrow\) <strong>₱185,555.23</strong></li>
+            </ul>
+
+            <h4 style="color: var(--secondary-color);">Task 2 Solutions:</h4>
+            <ul>
+                <li><strong>Variables:</strong> \(R = 8,000\), \(i = \frac{0.10}{4} = 0.025\), \(n = 4 \times 3 = 12\)</li>
+                <li><strong>Calculator Formula:</strong> \(P = 8000 \left[\frac{1 - (1 + 0.025)^{-12}}{0.025}\right] = \mathbf{\text{₱}82,062.24}\)</li>
+                <li><strong>Spreadsheet Formula:</strong> <code>=PV(0.10/4, 12, -8000)</code> \(\rightarrow\) <strong>₱82,062.24</strong></li>
+            </ul>
+
+            <h4 style="color: var(--secondary-color);">Task 3 Solutions:</h4>
+            <ul>
+                <li><strong>Variables:</strong> \(P = 350,000\), \(i = \frac{0.06}{12} = 0.005\), \(n = 12 \times 4 = 48\)</li>
+                <li><strong>Calculator Formula:</strong> \(R = \frac{350000 \times 0.005}{1 - (1 + 0.005)^{-48}} = \mathbf{\text{₱}8,219.01}\)</li>
+                <li><strong>Spreadsheet Formula:</strong> <code>=PMT(0.06/12, 48, -350000)</code> \(\rightarrow\) <strong>₱8,219.01</strong></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!-- JavaScript Logic for Calculators and Security -->
+<script>
+    function runActivityCalculator() {
+        const type = document.getElementById('calc_type').value;
+        const amount = parseFloat(document.getElementById('calc_amount').value) || 0;
+        const rate = (parseFloat(document.getElementById('calc_rate').value) || 0) / 100;
+        const m = parseInt(document.getElementById('calc_m').value);
+        const years = parseFloat(document.getElementById('calc_years').value) || 0;
+
+        if (amount <= 0 || years <= 0) {
+            document.getElementById('activity_calc_result').innerText = 'Please enter valid positive numbers for Amount and Time.';
+            return;
+        }
+
+        const i = rate / m;
+        const n = m * years;
+        let result = 0;
+        let label = '';
+
+        if (type === 'FV') {
+            result = amount * ((Math.pow(1 + i, n) - 1) / i);
+            label = 'Verified Future Value (F)';
+        } else if (type === 'PV') {
+            result = amount * ((1 - Math.pow(1 + i, -n)) / i);
+            label = 'Verified Present Value (P)';
+        } else if (type === 'PMT') {
+            result = (amount * i) / (1 - Math.pow(1 + i, -n));
+            label = 'Verified Periodic Payment (R)';
+        }
+
+        const formattedResult = result.toLocaleString('en-PH', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        document.getElementById('activity_calc_result').innerText = `${label}: ₱${formattedResult}`;
+    }
+
+    function unlockAnswerKey() {
+        const input = document.getElementById('passcode_input').value;
+        const errorMsg = document.getElementById('passcode_error');
+        const keyContent = document.getElementById('key_content');
+
+        if (input === '151.1A') {
+            keyContent.style.display = 'block';
+            errorMsg.style.display = 'none';
+            // Typeset MathJax inside unlocked section if needed
+            if (window.MathJax) {
+                MathJax.typesetPromise([keyContent]);
+            }
+        } else {
+            errorMsg.style.display = 'block';
+            keyContent.style.display = 'none';
+        }
+    }
+</script>
+
+</body>
+</html>
