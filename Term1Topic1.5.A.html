@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Applications of Series - General Mathematics</title>
+    <!-- MathJax for Mathematical Formatting -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="mathjax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --primary-color: #5e35b1;
+            --primary-light: #ede7f6;
+            --secondary-color: #3949ab;
+            --text-dark: #2c3e50;
+            --bg-light: #f8f9fa;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --accent-green: #2e7d32;
+            --accent-green-bg: #e8f5e9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        header {
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+            font-size: 2em;
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 20px;
+            font-size: 0.95em;
+            color: #666;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            background: var(--primary-light);
+            padding: 4px 12px;
+            border-radius: 15px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        h2 {
+            color: var(--secondary-color);
+            border-left: 4px solid var(--primary-color);
+            padding-left: 10px;
+            margin-top: 35px;
+        }
+
+        .concept-box {
+            background-color: var(--primary-light);
+            border-left: 5px solid var(--primary-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .example-box {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-top: 4px solid var(--secondary-color);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .example-title {
+            font-weight: bold;
+            color: var(--secondary-color);
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .solution {
+            background-color: #f1f3f5;
+            padding: 18px;
+            border-radius: 6px;
+            margin-top: 15px;
+        }
+
+        .formula-card {
+            text-align: center;
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px dashed var(--primary-color);
+            margin: 15px 0;
+        }
+
+        /* Live Calculator Widget Styling */
+        .calc-widget {
+            background-color: #ffffff;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .calc-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.05em;
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .calc-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .calc-group label {
+            font-size: 0.85em;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 4px;
+        }
+
+        .calc-group input, .calc-group select {
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+        .calc-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            font-size: 0.95em;
+            transition: background 0.2s;
+        }
+
+        .calc-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .calc-result {
+            margin-top: 15px;
+            background-color: var(--accent-green-bg);
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        ol, ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>🏦 Financial Applications of Series: Loans & Investments</h1>
+        <div class="meta-info">
+            <span class="meta-item">Grade 11 General Mathematics</span>
+            <span class="meta-item">Term 1 — Module Discussion</span>
+            <span class="meta-item">Interactive Dynamic Calculators</span>
+        </div>
+    </header>
+
+    <section id="introduction">
+        <h2>1. Introduction to Financial Series</h2>
+        <p>In real-world personal finance and business, transactions involving regular payments, investments, or loan repayments are structured using <strong>geometric sequences and series</strong>. Understanding how money grows or compounds over time allows individuals and businesses to make sound economic decisions.</p>
+        
+        <div class="concept-box">
+            <strong>Key Concept: Time Value of Money</strong><br>
+            A peso today is worth more than a peso in the future due to its potential earning capacity through interest. When regular deposits or loan payments are made over equal time intervals, we refer to this financial arrangement as an <strong>Annuity</strong>.
+        </div>
+    </section>
+
+    <!-- SECTION 2: FUTURE VALUE -->
+    <section id="future-value">
+        <h2>2. Future Value of an Ordinary Annuity (Investments & Savings)</h2>
+        <p>The <strong>Future Value (\(F\))</strong> of an ordinary annuity represents the total accumulated amount of a series of equal periodic payments (\(R\)) made at the end of each period, including compounding interest at a rate (\(i\)) per period over \(n\) total compounding periods.</p>
+
+        <div class="formula-card">
+            \[ F = R \left[ \frac{(1 + i)^n - 1}{i} \right] \]
+            <p style="font-size: 0.9em; margin-top: 8px; color: #555;">
+                Where: \(F\) = Future Value (₱) | \(R\) = Deposit Amount (₱) | \(i = \frac{r}{m}\) | \(n = m \times t\)
+            </p>
+        </div>
+
+        <!-- Live Calculator 1 -->
+        <div class="calc-widget">
+            <div class="calc-title">🧮 Live Interactive Calculator: Future Value (\(F\))</div>
+            <div class="calc-grid">
+                <div class="calc-group">
+                    <label>Periodic Deposit (\(R\)):</label>
+                    <input type="number" id="fv_R" value="5000" placeholder="e.g. 5000">
+                </div>
+                <div class="calc-group">
+                    <label>Annual Interest Rate (\(r\) %):</label>
+                    <input type="number" id="fv_r" value="6" step="0.1" placeholder="e.g. 6">
+                </div>
+                <div class="calc-group">
+                    <label>Frequency (\(m\)):</label>
+                    <select id="fv_m">
+                        <option value="12" selected>Monthly (12)</option>
+                        <option value="4">Quarterly (4)</option>
+                        <option value="2">Semi-Annually (2)</option>
+                        <option value="1">Annually (1)</option>
+                    </select>
+                </div>
+                <div class="calc-group">
+                    <label>Time (\(t\) in Years):</label>
+                    <input type="number" id="fv_t" value="3" placeholder="e.g. 3">
+                </div>
+            </div>
+            <button class="calc-btn" onclick="calculateFutureValue()">Calculate Future Value</button>
+            <div class="calc-result" id="fv_result">Accumulated Future Value: ₱196,680.52</div>
+        </div>
+
+        <div class="example-box">
+            <div class="example-title">Example 1: Accumulated Savings Account</div>
+            <p><strong>Problem:</strong> Maria deposits <strong>₱5,000</strong> at the end of every month into a savings account that earns an annual interest rate of <strong>6% compounded monthly</strong>. How much total money will she have in her savings account at the end of <strong>3 years</strong>?</p>
+
+            <div class="solution">
+                <strong>Step-by-step Solution:</strong>
+                <ol>
+                    <li><strong>Given:</strong> \(R = \text{₱}5,000\), \(r = 0.06\), \(m = 12\), \(i = \frac{0.06}{12} = 0.005\), \(t = 3\), \(n = 12 \times 3 = 36\)</li>
+                    <li><strong>Formula:</strong> \(F = 5000 \left[ \frac{(1 + 0.005)^{36} - 1}{0.005} \right]\)</li>
+                    <li><strong>Calculation:</strong> \(F = 5000 \times 39.3361 = \mathbf{\text{₱}196,680.52}\)</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: PRESENT VALUE -->
+    <section id="present-value">
+        <h2>3. Present Value of an Ordinary Annuity (Loans & Amortization)</h2>
+        <p>The <strong>Present Value (\(P\))</strong> of an ordinary annuity represents the current principal amount—such as the total loan value borrowed today—that can be fully paid off through a series of equal regular periodic payments (\(R\)) over \(n\) periods.</p>
+
+        <div class="formula-card">
+            \[ P = R \left[ \frac{1 - (1 + i)^{-n}}{i} \right] \]
+        </div>
+
+        <!-- Live Calculator 2 -->
+        <div class="calc-widget">
+            <div class="calc-title">🧮 Live Interactive Calculator: Present Value / Loan Principal (\(P\))</div>
+            <div class="calc-grid">
+                <div class="calc-group">
+                    <label>Monthly Payment (\(R\)):</label>
+                    <input type="number" id="pv_R" value="12000" placeholder="e.g. 12000">
+                </div>
+                <div class="calc-group">
+                    <label>Annual Interest Rate (\(r\) %):</label>
+                    <input type="number" id="pv_r" value="8" step="0.1" placeholder="e.g. 8">
+                </div>
+                <div class="calc-group">
+                    <label>Frequency (\(m\)):</label>
+                    <select id="pv_m">
+                        <option value="12" selected>Monthly (12)</option>
+                        <option value="4">Quarterly (4)</option>
+                        <option value="2">Semi-Annually (2)</option>
+                        <option value="1">Annually (1)</option>
+                    </select>
+                </div>
+                <div class="calc-group">
+                    <label>Loan Term (\(t\) in Years):</label>
+                    <input type="number" id="pv_t" value="2" placeholder="e.g. 2">
+                </div>
+            </div>
+            <button class="calc-btn" onclick="calculatePresentValue()">Calculate Present Value</button>
+            <div class="calc-result" id="pv_result">Loan Principal Amount: ₱264,912.82</div>
+        </div>
+
+        <div class="example-box">
+            <div class="example-title">Example 2: Loan Amortization (Monthly Repayments)</div>
+            <p><strong>Problem:</strong> Juan pays <strong>₱12,000</strong> at the end of every month for <strong>2 years</strong> to repay a loan at <strong>8% interest compounded monthly</strong>. What was the original principal amount borrowed (\(P\))?</p>
+
+            <div class="solution">
+                <strong>Step-by-step Solution:</strong>
+                <ol>
+                    <li><strong>Given:</strong> \(R = \text{₱}12,000\), \(r = 0.08\), \(m = 12\), \(i = \frac{0.08}{12} \approx 0.006667\), \(n = 24\)</li>
+                    <li><strong>Formula:</strong> \(P = 12000 \left[ \frac{1 - (1 + 0.006667)^{-24}}{0.006667} \right]\)</li>
+                    <li><strong>Calculation:</strong> \(P = 12000 \times 22.07607 = \mathbf{\text{₱}264,912.82}\)</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: REQUIRED PAYMENT -->
+    <section id="payment-calculator">
+        <h2>4. Calculating Required Periodic Payment (\(R\))</h2>
+        <p>When borrowing a fixed loan amount (\(P\)), we can compute the required regular payment (\(R\)) needed to pay off the debt within a designated timeframe.</p>
+
+        <div class="formula-card">
+            \[ R = \frac{P \cdot i}{1 - (1 + i)^{-n}} \]
+        </div>
+
+        <!-- Live Calculator 3 -->
+        <div class="calc-widget">
+            <div class="calc-title">🧮 Live Interactive Calculator: Required Repayment (\(R\))</div>
+            <div class="calc-grid">
+                <div class="calc-group">
+                    <label>Loan Principal (\(P\)):</label>
+                    <input type="number" id="pmt_P" value="500000" placeholder="e.g. 500000">
+                </div>
+                <div class="calc-group">
+                    <label>Annual Interest Rate (\(r\) %):</label>
+                    <input type="number" id="pmt_r" value="9" step="0.1" placeholder="e.g. 9">
+                </div>
+                <div class="calc-group">
+                    <label>Frequency (\(m\)):</label>
+                    <select id="pmt_m">
+                        <option value="4" selected>Quarterly (4)</option>
+                        <option value="12">Monthly (12)</option>
+                        <option value="2">Semi-Annually (2)</option>
+                        <option value="1">Annually (1)</option>
+                    </select>
+                </div>
+                <div class="calc-group">
+                    <label>Time (\(t\) in Years):</label>
+                    <input type="number" id="pmt_t" value="5" placeholder="e.g. 5">
+                </div>
+            </div>
+            <button class="calc-btn" onclick="calculatePayment()">Calculate Payment</button>
+            <div class="calc-result" id="pmt_result">Required Periodic Payment: ₱31,321.34</div>
+        </div>
+
+        <div class="example-box">
+            <div class="example-title">Example 3: Determining Required Quarterly Payment</div>
+            <p><strong>Problem:</strong> An entrepreneur borrows <strong>₱500,000</strong> for a <strong>5-year term</strong> at <strong>9% interest compounded quarterly</strong>. What is the quarterly payment required?</p>
+
+            <div class="solution">
+                <strong>Step-by-step Solution:</strong>
+                <ol>
+                    <li><strong>Given:</strong> \(P = \text{₱}500,000\), \(i = \frac{0.09}{4} = 0.0225\), \(n = 4 \times 5 = 20\)</li>
+                    <li><strong>Formula:</strong> \(R = \frac{500000 \times 0.0225}{1 - (1 + 0.0225)^{-20}}\)</li>
+                    <li><strong>Calculation:</strong> \(R = \frac{11250}{0.35918} = \mathbf{\text{₱}31,321.34}\)</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: SUMMARY -->
+    <section id="summary">
+        <h2>5. Summary of Formulas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Application</th>
+                    <th>Formula</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Future Value (\(F\))</strong></td>
+                    <td>\(F = R \left[ \frac{(1 + i)^n - 1}{i} \right]\)</td>
+                    <td>Calculates total accumulated savings/investments over time.</td>
+                </tr>
+                <tr>
+                    <td><strong>Present Value (\(P\))</strong></td>
+                    <td>\(P = R \left[ \frac{1 - (1 + i)^{-n}}{i} \right]\)</td>
+                    <td>Calculates initial loan amount supported by payments.</td>
+                </tr>
+                <tr>
+                    <td><strong>Periodic Payment (\(R\))</strong></td>
+                    <td>\(R = \frac{P \cdot i}{1 - (1 + i)^{-n}}\)</td>
+                    <td>Determines payment needed to settle a loan balance.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+
+<!-- JavaScript Logic for Live Calculators -->
+<script>
+    function calculateFutureValue() {
+        const R = parseFloat(document.getElementById('fv_R').value) || 0;
+        const r = (parseFloat(document.getElementById('fv_r').value) || 0) / 100;
+        const m = parseInt(document.getElementById('fv_m').value);
+        const t = parseFloat(document.getElementById('fv_t').value) || 0;
+
+        const i = r / m;
+        const n = m * t;
+
+        if (i === 0) {
+            const F = R * n;
+            document.getElementById('fv_result').innerText = `Accumulated Future Value: ₱${F.toLocaleString('en-PH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            return;
+        }
+
+        const F = R * ((Math.pow(1 + i, n) - 1) / i);
+        document.getElementById('fv_result').innerText = `Accumulated Future Value: ₱${F.toLocaleString('en-PH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+    }
+
+    function calculatePresentValue() {
+        const R = parseFloat(document.getElementById('pv_R').value) || 0;
+        const r = (parseFloat(document.getElementById('pv_r').value) || 0) / 100;
+        const m = parseInt(document.getElementById('pv_m').value);
+        const t = parseFloat(document.getElementById('pv_t').value) || 0;
+
+        const i = r / m;
+        const n = m * t;
+
+        if (i === 0) {
+            const P = R * n;
+            document.getElementById('pv_result').innerText = `Loan Principal Amount: ₱${P.toLocaleString('en-PH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            return;
+        }
+
+        const P = R * ((1 - Math.pow(1 + i, -n)) / i);
+        document.getElementById('pv_result').innerText = `Loan Principal Amount: ₱${P.toLocaleString('en-PH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+    }
+
+    function calculatePayment() {
+        const P = parseFloat(document.getElementById('pmt_P').value) || 0;
+        const r = (parseFloat(document.getElementById('pmt_r').value) || 0) / 100;
+        const m = parseInt(document.getElementById('pmt_m').value);
+        const t = parseFloat(document.getElementById('pmt_t').value) || 0;
+
+        const i = r / m;
+        const n = m * t;
+
+        if (i === 0) {
+            const R = P / n;
+            document.getElementById('pmt_result').innerText = `Required Periodic Payment: ₱${R.toLocaleString('en-PH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            return;
+        }
+
+        const R = (P * i) / (1 - Math.pow(1 + i, -n));
+        document.getElementById('pmt_result').innerText = `Required Periodic Payment: ₱${R.toLocaleString('en-PH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+    }
+</script>
+
+</body>
+</html>
