@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activity Sheet: Financial Applications of Series</title>
-    <!-- MathJax for Mathematical Formatting -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="mathjax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
@@ -41,12 +40,47 @@
             border-bottom: 3px solid var(--primary-color);
             padding-bottom: 15px;
             margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .header-title-box {
+            flex: 1;
+            min-width: 280px;
         }
 
         header h1 {
             color: var(--primary-color);
             margin: 0 0 10px 0;
             font-size: 1.8em;
+        }
+
+        .download-btn {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.9em;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .download-btn:hover {
+            background-color: #1b5e20;
+            transform: translateY(-1px);
+        }
+
+        .download-btn:active {
+            transform: translateY(0);
         }
 
         .instructions-box {
@@ -228,14 +262,25 @@
             font-family: Consolas, monospace;
             color: #c7254e;
         }
+
+        @media (max-width: 600px) {
+            .answer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <h1>📝 Activity Sheet: Financial Applications of Series</h1>
-        <p style="margin: 0; color: #555;">Grade 11 General Mathematics — Annuities, Loans & Investments</p>
+        <div class="header-title-box">
+            <h1>📝 Activity Sheet: Financial Applications of Series</h1>
+            <p style="margin: 0; color: #555;">Grade 11 General Mathematics — Annuities, Loans & Investments</p>
+        </div>
+        <button class="download-btn" onclick="downloadHTMLFile()">
+            📥 Download for Offline Use
+        </button>
     </header>
 
     <div class="instructions-box">
@@ -247,7 +292,6 @@
         </ol>
     </div>
 
-    <!-- REFERENCE GUIDE TABLE -->
     <h3 style="color: var(--secondary-color);">📖 Quick Reference: Formulas & Spreadsheet Instructions</h3>
     <table class="guide-table">
         <thead>
@@ -276,7 +320,6 @@
         </tbody>
     </table>
 
-    <!-- LIVE INTERACTIVE CALCULATOR -->
     <div class="calc-widget">
         <div class="calc-title">🧮 Embedded Live Verification Calculator</div>
         <div class="calc-grid">
@@ -314,7 +357,6 @@
         <div class="calc-result" id="activity_calc_result">Enter values above and click 'Verify Answer'</div>
     </div>
 
-    <!-- EXERCISE 1 -->
     <div class="problem-card">
         <div class="problem-title">Task 1: Future Value of Investment (10 Points)</div>
         <p><strong>Problem Scenario:</strong> Liza sets up an emergency fund by depositing <strong>₱3,500</strong> at the end of every month into an account paying <strong>5% interest per annum compounded monthly</strong>. How much will be in her account after <strong>4 years</strong>?</p>
@@ -336,7 +378,6 @@
         </div>
     </div>
 
-    <!-- EXERCISE 2 -->
     <div class="problem-card">
         <div class="problem-title">Task 2: Loan Principal / Present Value (10 Points)</div>
         <p><strong>Problem Scenario:</strong> Mark agrees to pay <strong>₱8,000</strong> at the end of every quarter for <strong>3 years</strong> to fully pay off a motorcycle loan. If the financing rate is <strong>10% compounded quarterly</strong>, what was the original price/present value of the motorcycle?</p>
@@ -358,7 +399,6 @@
         </div>
     </div>
 
-    <!-- EXERCISE 3 -->
     <div class="problem-card">
         <div class="problem-title">Task 3: Determining Required Loan Repayment (10 Points)</div>
         <p><strong>Problem Scenario:</strong> A cooperative bakery wants to borrow <strong>₱350,000</strong> to purchase a commercial oven. The bank offers a <strong>4-year loan</strong> at <strong>6% interest compounded monthly</strong>. What will be the required monthly repayment amount (\(R\))?</p>
@@ -380,7 +420,6 @@
         </div>
     </div>
 
-    <!-- SECURED TEACHER ANSWER KEY SECTION -->
     <div class="answer-key-section">
         <h3 style="color: var(--primary-color); margin-top: 0;">🔒 Secured Teacher Answer Key</h3>
         <p style="font-size: 0.9em; color: #555;">Enter the passcode to unlock the step-by-step solutions and spreadsheet functions.</p>
@@ -417,7 +456,6 @@
 
 </div>
 
-<!-- JavaScript Logic for Calculators and Security -->
 <script>
     function runActivityCalculator() {
         const type = document.getElementById('calc_type').value;
@@ -459,7 +497,6 @@
         if (input === '151.1A') {
             keyContent.style.display = 'block';
             errorMsg.style.display = 'none';
-            // Typeset MathJax inside unlocked section if needed
             if (window.MathJax) {
                 MathJax.typesetPromise([keyContent]);
             }
@@ -467,6 +504,19 @@
             errorMsg.style.display = 'block';
             keyContent.style.display = 'none';
         }
+    }
+
+    // Function to download full HTML content offline
+    function downloadHTMLFile() {
+        const htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+        const blob = new Blob([htmlContent], { type: "text/html;charset=utf-8" });
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "Activity_Sheet_Financial_Applications_of_Series.html";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(a.href);
     }
 </script>
 
