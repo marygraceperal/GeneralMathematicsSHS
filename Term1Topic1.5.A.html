@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Financial Applications of Series - General Mathematics</title>
-    <!-- MathJax for Mathematical Formatting -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="mathjax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
@@ -43,18 +42,61 @@
             margin-bottom: 30px;
         }
 
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
         header h1 {
             color: var(--primary-color);
             margin: 0 0 10px 0;
             font-size: 2em;
         }
 
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9em;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.2s, transform 0.1s;
+            text-decoration: none;
+        }
+
+        .action-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .action-btn.secondary {
+            background-color: #5c6bc0;
+        }
+
+        .action-btn.secondary:hover {
+            background-color: #3f51b5;
+        }
+
         .meta-info {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             font-size: 0.95em;
             color: #666;
             flex-wrap: wrap;
+            margin-top: 15px;
         }
 
         .meta-item {
@@ -210,13 +252,35 @@
         li {
             margin-bottom: 8px;
         }
+
+        /* Print Optimization */
+        @media print {
+            body {
+                background-color: #ffffff;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+                max-width: 100%;
+            }
+            .no-print, .action-buttons {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <h1>🏦 Financial Applications of Series: Loans & Investments</h1>
+        <div class="header-top">
+            <h1>🏦 Financial Applications of Series: Loans & Investments</h1>
+            <div class="action-buttons no-print">
+                <button class="action-btn" onclick="downloadPage()">📥 Download for Offline Use</button>
+                <button class="action-btn secondary" onclick="window.print()">🖨️ Print / PDF</button>
+            </div>
+        </div>
         <div class="meta-info">
             <span class="meta-item">Grade 11 General Mathematics</span>
             <span class="meta-item">Term 1 — Module Discussion</span>
@@ -234,7 +298,6 @@
         </div>
     </section>
 
-    <!-- SECTION 2: FUTURE VALUE -->
     <section id="future-value">
         <h2>2. Future Value of an Ordinary Annuity (Investments & Savings)</h2>
         <p>The <strong>Future Value (\(F\))</strong> of an ordinary annuity represents the total accumulated amount of a series of equal periodic payments (\(R\)) made at the end of each period, including compounding interest at a rate (\(i\)) per period over \(n\) total compounding periods.</p>
@@ -246,7 +309,6 @@
             </p>
         </div>
 
-        <!-- Live Calculator 1 -->
         <div class="calc-widget">
             <div class="calc-title">🧮 Live Interactive Calculator: Future Value (\(F\))</div>
             <div class="calc-grid">
@@ -291,7 +353,6 @@
         </div>
     </section>
 
-    <!-- SECTION 3: PRESENT VALUE -->
     <section id="present-value">
         <h2>3. Present Value of an Ordinary Annuity (Loans & Amortization)</h2>
         <p>The <strong>Present Value (\(P\))</strong> of an ordinary annuity represents the current principal amount—such as the total loan value borrowed today—that can be fully paid off through a series of equal regular periodic payments (\(R\)) over \(n\) periods.</p>
@@ -300,7 +361,6 @@
             \[ P = R \left[ \frac{1 - (1 + i)^{-n}}{i} \right] \]
         </div>
 
-        <!-- Live Calculator 2 -->
         <div class="calc-widget">
             <div class="calc-title">🧮 Live Interactive Calculator: Present Value / Loan Principal (\(P\))</div>
             <div class="calc-grid">
@@ -345,7 +405,6 @@
         </div>
     </section>
 
-    <!-- SECTION 4: REQUIRED PAYMENT -->
     <section id="payment-calculator">
         <h2>4. Calculating Required Periodic Payment (\(R\))</h2>
         <p>When borrowing a fixed loan amount (\(P\)), we can compute the required regular payment (\(R\)) needed to pay off the debt within a designated timeframe.</p>
@@ -354,7 +413,6 @@
             \[ R = \frac{P \cdot i}{1 - (1 + i)^{-n}} \]
         </div>
 
-        <!-- Live Calculator 3 -->
         <div class="calc-widget">
             <div class="calc-title">🧮 Live Interactive Calculator: Required Repayment (\(R\))</div>
             <div class="calc-grid">
@@ -399,7 +457,6 @@
         </div>
     </section>
 
-    <!-- SECTION 5: SUMMARY -->
     <section id="summary">
         <h2>5. Summary of Formulas</h2>
         <table>
@@ -431,8 +488,8 @@
     </section>
 </div>
 
-<!-- JavaScript Logic for Live Calculators -->
 <script>
+    // Live Calculator Functions
     function calculateFutureValue() {
         const R = parseFloat(document.getElementById('fv_R').value) || 0;
         const r = (parseFloat(document.getElementById('fv_r').value) || 0) / 100;
@@ -488,6 +545,20 @@
 
         const R = (P * i) / (1 - Math.pow(1 + i, -n));
         document.getElementById('pmt_result').innerText = `Required Periodic Payment: ₱${R.toLocaleString('en-PH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+    }
+
+    // Dynamic Download Function
+    function downloadPage() {
+        const htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+        const blob = new Blob([htmlContent], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Financial_Applications_of_Series.html';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
     }
 </script>
 
