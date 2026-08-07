@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Topic 1.1.A: Salaries, Hourly Wages, Overtime & Commissions</title>
     
-    <!-- MathJax Library to render LaTeX code ($...$ and $$...$$) -->
     <script>
         MathJax = {
             tex: {
@@ -44,6 +43,15 @@
             box-shadow: 0 4px 15px rgba(106, 27, 154, 0.08);
         }
 
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
         .header-badge {
             display: inline-block;
             background-color: var(--secondary-color);
@@ -52,7 +60,37 @@
             border-radius: 20px;
             font-weight: bold;
             font-size: 0.9em;
-            margin-bottom: 10px;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            text-decoration: none;
+        }
+
+        .download-btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .download-btn:active {
+            transform: translateY(0);
+        }
+
+        .download-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
         }
 
         h1 {
@@ -172,12 +210,28 @@
         tr:nth-child(even) {
             background-color: #fcf8ff;
         }
+
+        /* Hide download button when printing */
+        @media print {
+            .download-btn {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <span class="header-badge">Term 1 • Week 1 • Code: 1.1.A</span>
+    <div class="header-top">
+        <span class="header-badge">Term 1 • Week 1 • Code: 1.1.A</span>
+        <button class="download-btn" onclick="downloadOfflineFile()">
+            <svg viewBox="0 0 24 24">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+            </svg>
+            Download for Offline Use
+        </button>
+    </div>
+
     <h1>💵 Salaries, Hourly Wages, Overtime & Commissions</h1>
 
     <div class="competency-box">
@@ -185,7 +239,6 @@
         <p>Calculate weekly or monthly wages from an annual salary, wages from an hourly rate, including overtime & allowances.</p>
     </div>
 
-    <!-- SECTION 1: ANNUAL SALARY CONVERSIONS -->
     <div class="section-title">1. Converting Annual Salary to Pay Period Earnings</div>
     <p>A <strong>salary</strong> is a fixed payment made by an employer to an employee, typically specified as an annual amount regardless of the hours worked. To compute gross earnings per pay cycle, divide the annual salary by the total number of pay periods in a year.</p>
 
@@ -230,7 +283,6 @@
         </ol>
     </div>
 
-    <!-- SECTION 2: HOURLY WAGES & OVERTIME -->
     <div class="section-title">2. Hourly Wages and Overtime Rates</div>
     <p>An <strong>hourly wage</strong> is paid based on the actual hours worked. Standard work schedules typically mandate 8 hours per day or 40 hours per week. Any hours worked beyond standard hours are classified as <strong>overtime (OT)</strong> and compensated at a higher multiplier rate.</p>
 
@@ -254,7 +306,6 @@
         </ol>
     </div>
 
-    <!-- SECTION 3: ALLOWANCES & GROSS EARNINGS -->
     <div class="section-title">3. Allowances & Gross Earnings</div>
     <p><strong>Allowances</strong> are supplemental monetary benefits provided to cover job-related expenses (e.g., transportation, meal, or communication allowances). Gross wage is the total sum of all earnings before statutory or voluntary deductions.</p>
 
@@ -278,6 +329,21 @@
     </div>
 
 </div>
+
+<script>
+    function downloadOfflineFile() {
+        const htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+        const blob = new Blob([htmlContent], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Topic_1.1.A_Salaries_Wages_Overtime.html';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+</script>
 
 </body>
 </html>
