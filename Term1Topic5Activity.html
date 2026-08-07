@@ -83,6 +83,14 @@
             transform: translateY(0);
         }
 
+        /* Inline SVG Download Icon Alignment */
+        .download-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
         .instructions-box {
             background-color: var(--primary-light);
             border-left: 5px solid var(--primary-color);
@@ -276,10 +284,13 @@
     <header>
         <div class="header-title-box">
             <h1>📝 Activity Sheet: Financial Applications of Series</h1>
-            <p style="margin: 0; color: #555;">Grade 11 General Mathematics — Annuities, Loans & Investments</p>
+            <p style="margin: 0; color: #555;">Grade 11 General Mathematics — Annuities, Loans &amp; Investments</p>
         </div>
         <button class="download-btn" onclick="downloadHTMLFile()">
-            📥 Download for Offline Use
+            <svg viewBox="0 0 24 24">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+            </svg>
+            Download for Offline Use
         </button>
     </header>
 
@@ -292,7 +303,7 @@
         </ol>
     </div>
 
-    <h3 style="color: var(--secondary-color);">📖 Quick Reference: Formulas & Spreadsheet Instructions</h3>
+    <h3 style="color: var(--secondary-color);">📖 Quick Reference: Formulas &amp; Spreadsheet Instructions</h3>
     <table class="guide-table">
         <thead>
             <tr>
@@ -366,7 +377,7 @@
                 <div class="method-title">A. Calculator Formula Solution</div>
                 <p><strong>1. Identify variables:</strong><br>
                 \(R\) = _________, \(i = \frac{r}{m}\) = _________, \(n = m \times t\) = _________</p>
-                <p><strong>2. Formula Substitution & Calculation:</strong><br><br><br><br></p>
+                <p><strong>2. Formula Substitution &amp; Calculation:</strong><br><br><br><br></p>
                 <p><strong>Final Answer (₱):</strong> _____________________</p>
             </div>
             <div class="method-box">
@@ -387,7 +398,7 @@
                 <div class="method-title">A. Calculator Formula Solution</div>
                 <p><strong>1. Identify variables:</strong><br>
                 \(R\) = _________, \(i = \frac{r}{m}\) = _________, \(n = m \times t\) = _________</p>
-                <p><strong>2. Formula Substitution & Calculation:</strong><br><br><br><br></p>
+                <p><strong>2. Formula Substitution &amp; Calculation:</strong><br><br><br><br></p>
                 <p><strong>Final Answer (₱):</strong> _____________________</p>
             </div>
             <div class="method-box">
@@ -408,7 +419,7 @@
                 <div class="method-title">A. Calculator Formula Solution</div>
                 <p><strong>1. Identify variables:</strong><br>
                 \(P\) = _________, \(i = \frac{r}{m}\) = _________, \(n = m \times t\) = _________</p>
-                <p><strong>2. Formula Substitution & Calculation:</strong><br><br><br><br></p>
+                <p><strong>2. Formula Substitution &amp; Calculation:</strong><br><br><br><br></p>
                 <p><strong>Final Answer (₱):</strong> _____________________</p>
             </div>
             <div class="method-box">
