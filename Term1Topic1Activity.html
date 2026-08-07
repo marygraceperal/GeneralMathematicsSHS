@@ -163,6 +163,32 @@
             display: none;
         }
 
+        /* Action Buttons Styling */
+        .action-bar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            max-width: 850px;
+            margin: 0 auto 20px auto;
+        }
+
+        .action-btn {
+            padding: 10px 18px;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            font-size: 0.95em;
+        }
+
+        .action-btn:hover {
+            background-color: var(--accent-color);
+        }
+
         /* Printable styles */
         @media print {
             body {
@@ -182,26 +208,14 @@
                 background-color: #fff;
             }
         }
-
-        .print-btn {
-            display: block;
-            width: 100%;
-            max-width: 200px;
-            margin: 0 auto 20px auto;
-            padding: 10px;
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            border: none;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
 
-    <button class="print-btn no-print" onclick="window.print()">🖨️ Print Activity Sheet</button>
+    <div class="action-bar no-print">
+        <button class="action-btn" onclick="window.print()">🖨️ Print Activity Sheet</button>
+        <button class="action-btn" onclick="downloadOffline()">📥 Download for Offline Use</button>
+    </div>
 
     <div class="sheet-container">
         <h1>General Mathematics (Grade 11)</h1>
@@ -217,7 +231,6 @@
             </ul>
         </div>
 
-        <!-- PART I -->
         <div class="section-title">Part I: Computational Skills (10 Points)</div>
         <p>Complete the missing values in the payroll summary table below.</p>
 
@@ -256,7 +269,6 @@
             </tbody>
         </table>
 
-        <!-- PART II -->
         <div class="section-title">Part II: Applied Word Problems (12 Points)</div>
 
         <div class="problem-card">
@@ -288,7 +300,6 @@
             <div class="workspace">Show your step-by-step solution here:</div>
         </div>
 
-        <!-- PART III -->
         <div class="section-title">Part III: Real-World Financial Analysis (8 Points)</div>
 
         <div class="problem-card">
@@ -301,7 +312,6 @@
             <div class="workspace">Write your justification and final conclusion here:</div>
         </div>
 
-        <!-- ANSWER KEY SECTION -->
         <div class="answer-key-section no-print">
             <div class="section-title">🔒 Teacher Answer Key Section</div>
             <div class="auth-container">
@@ -364,6 +374,19 @@
                 err.style.display = "block";
                 content.style.display = "none";
             }
+        }
+
+        function downloadOffline() {
+            const htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: "text/html" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "Activity_Sheet_Salaries_Wages_Commissions.html";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
         }
     </script>
 
