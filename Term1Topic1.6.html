@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Reference Sheet & Live Calculator: Measurement & Geometry</title>
+    <style>
+        :root {
+            --primary: #5b21b6;
+            --primary-light: #f5f3ff;
+            --primary-hover: #4c1d95;
+            --secondary: #7c3aed;
+            --secondary-light: #ede9fe;
+            --accent: #d97706;
+            --text-main: #1e1b4b;
+            --text-muted: #4c1d95;
+            --bg-body: #faf5ff;
+            --card-bg: #ffffff;
+            --border: #ddd6fe;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-body);
+            margin: 0;
+            padding: 20px 20px 80px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px -1px rgba(91, 33, 182, 0.12), 0 2px 6px -1px rgba(91, 33, 182, 0.08);
+        }
+
+        header {
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--primary);
+            margin: 0 0 10px 0;
+            font-size: 2rem;
+            letter-spacing: -0.025em;
+        }
+
+        .competencies {
+            background-color: var(--primary-light);
+            border-left: 5px solid var(--primary);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 30px;
+        }
+
+        .competencies h3 {
+            margin: 0 0 8px 0;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .competencies ul {
+            margin: 0;
+            padding-left: 20px;
+            color: var(--text-main);
+        }
+
+        h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 8px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+
+        h3 {
+            color: var(--secondary);
+            margin-top: 25px;
+            font-size: 1.15rem;
+        }
+
+        /* Calculator Styles */
+        .calculator-section {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+            border: 2px solid var(--secondary);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.1);
+        }
+
+        .calculator-section h2 {
+            margin-top: 0;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+
+        .form-group input, .form-group select {
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+            background: white;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+        }
+
+        .calc-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 100%;
+        }
+
+        .calc-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .calc-output {
+            margin-top: 20px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            display: none;
+        }
+
+        .calc-output h4 {
+            margin-top: 0;
+            color: var(--primary);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+        }
+
+        .step-list {
+            padding-left: 20px;
+            margin-bottom: 0;
+        }
+
+        .step-list li {
+            margin-bottom: 10px;
+        }
+
+        .step-highlight {
+            background-color: var(--secondary-light);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background-color: var(--secondary-light);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: var(--primary-light);
+        }
+
+        .math {
+            font-family: 'Times New Roman', Times, serif;
+            font-style: italic;
+            font-weight: bold;
+            color: #3b0764;
+        }
+
+        .formula-box {
+            background-color: var(--primary-light);
+            border: 1px solid var(--border);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.1rem;
+            margin: 20px 0;
+        }
+
+        .example-card {
+            background: #faf5ff;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--secondary);
+            border-radius: 8px;
+            padding: 18px 20px;
+            margin-bottom: 20px;
+        }
+
+        .example-card h4 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.05rem;
+        }
+
+        ul.benchmarks {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul.benchmarks li {
+            padding: 10px 14px;
+            background: var(--primary-light);
+            margin-bottom: 8px;
+            border-radius: 6px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .rule-note {
+            background: #fef3c7;
+            border-left: 4px solid var(--accent);
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+
+        .cancel-unit {
+            text-decoration: line-through;
+            color: #9333ea;
+            opacity: 0.7;
+        }
+
+        /* Bottom Floating Print/Save Action Bar */
+        .action-bar-container {
+            margin-top: 40px;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 2px dashed var(--border);
+        }
+
+        .print-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: var(--primary);
+            color: white;
+            padding: 14px 28px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(91, 33, 182, 0.3);
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .print-btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(91, 33, 182, 0.4);
+        }
+
+        .print-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+
+        /* Print Specific Styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+                max-width: 100%;
+            }
+            .action-bar-container, .print-btn {
+                display: none !important;
+            }
+            .calculator-section {
+                background: white;
+                border: 1px solid #ccc;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px 10px 80px 10px;
+            }
+            .container {
+                padding: 20px;
+            }
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Master Reference Sheet: Measurement & Geometry</h1>
+    </header>
+
+    <div class="competencies">
+        <h3>Learning Competencies:</h3>
+        <ul>
+            <li>Determine and apply appropriate metric units for various contexts (small, large, and scientific quantities).</li>
+            <li>Convert measurements within the metric system (intra-system) and between different systems (inter-system).</li>
+        </ul>
+    </div>
+
+    <!-- Live Interactive Calculator Section -->
+    <div class="calculator-section">
+        <h2>Live Conversion & Step-by-Step Calculator</h2>
+        <p>Use this live checking tool to verify unit conversions with step-by-step factor-label solutions.</p>
+        
+        <div class="calc-grid">
+            <div class="form-group">
+                <label for="category">Measurement Category</label>
+                <select id="category" onchange="updateUnits()">
+                    <option value="length">Length</option>
+                    <option value="mass">Mass / Weight</option>
+                    <option value="volume">Volume</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="inputValue">Value to Convert</label>
+                <input type="number" id="inputValue" value="10" step="any" placeholder="Enter value...">
+            </div>
+            <div class="form-group">
+                <label for="fromUnit">From Unit</label>
+                <select id="fromUnit"></select>
+            </div>
+            <div class="form-group">
+                <label for="toUnit">To Unit</label>
+                <select id="toUnit"></select>
+            </div>
+        </div>
+
+        <button class="calc-btn" onclick="calculateConversion()">Calculate & Show Step-by-Step Solution</button>
+
+        <div id="calcOutput" class="calc-output">
+            <h4>Step-by-Step Dimensional Analysis Solution:</h4>
+            <ol class="step-list" id="stepList"></ol>
+        </div>
+    </div>
+
+    <h2>1. Complete SI (Metric) Prefix System (24 Official Prefixes)</h2>
+    <p>The International System of Units (SI) uses powers of 10 to scale standard base units (<span class="math">meter</span>, <span class="math">gram</span>, <span class="math">liter</span>, <span class="math">second</span>).</p>
+
+    <h3>Multiples (&ge; 1)</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Prefix</th>
+                <th>Symbol</th>
+                <th>Scientific Notation</th>
+                <th>Multiplier Value</th>
+                <th>Context / Application Example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><b>quetta</b></td><td><span class="math">Q</span></td><td><span class="math">10<sup>30</sup></span></td><td>1,000,000,000,000,000,000,000,000,000,000</td><td>Earth's total mass (&approx; 6 <span class="math">Qg</span>)</td></tr>
+            <tr><td><b>ronna</b></td><td><span class="math">R</span></td><td><span class="math">10<sup>27</sup></span></td><td>1,000,000,000,000,000,000,000,000,000</td><td>Jupiter's mass (&approx; 1.9 <span class="math">Rg</span>)</td></tr>
+            <tr><td><b>yotta</b></td><td><span class="math">Y</span></td><td><span class="math">10<sup>24</sup></span></td><td>1,000,000,000,000,000,000,000,000</td><td>Ocean water volume (&approx; 1.4 <span class="math">YL</span>)</td></tr>
+            <tr><td><b>zetta</b></td><td><span class="math">Z</span></td><td><span class="math">10<sup>21</sup></span></td><td>1,000,000,000,000,000,000,000</td><td>Global digital data volume (<span class="math">ZB</span>)</td></tr>
+            <tr><td><b>exa</b></td><td><span class="math">E</span></td><td><span class="math">10<sup>18</sup></span></td><td>1,000,000,000,000,000,000</td><td>Supercomputer processing capacity (<span class="math">FLOPS</span>)</td></tr>
+            <tr><td><b>peta</b></td><td><span class="math">P</span></td><td><span class="math">10<sup>15</sup></span></td><td>1,000,000,000,000,000</td><td>Astronomical distances, data storage</td></tr>
+            <tr><td><b>tera</b></td><td><span class="math">T</span></td><td><span class="math">10<sup>12</sup></span></td><td>1,000,000,000,000</td><td>Digital hard drive capacity (<span class="math">TB</span>)</td></tr>
+            <tr><td><b>giga</b></td><td><span class="math">G</span></td><td><span class="math">10<sup>9</sup></span></td><td>1,000,000,000</td><td>Electrical grid capacity (<span class="math">GW</span>)</td></tr>
+            <tr><td><b>mega</b></td><td><span class="math">M</span></td><td><span class="math">10<sup>6</sup></span></td><td>1,000,000</td><td>Radio broadcast frequencies (<span class="math">MHz</span>)</td></tr>
+            <tr><td><b>kilo</b></td><td><span class="math">k</span></td><td><span class="math">10<sup>3</sup></span></td><td>1,000</td><td>Travel distance (<span class="math">km</span>), human mass (<span class="math">kg</span>)</td></tr>
+            <tr><td><b>hecto</b></td><td><span class="math">h</span></td><td><span class="math">10<sup>2</sup></span></td><td>100</td><td>Land surface area (<span class="math">hectares</span>)</td></tr>
+            <tr><td><b>deca</b></td><td><span class="math">da</span></td><td><span class="math">10<sup>1</sup></span></td><td>10</td><td>Wave/meteorological metrics</td></tr>
+        </tbody>
+    </table>
+
+    <h3>Submultiples (&lt; 1)</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Prefix</th>
+                <th>Symbol</th>
+                <th>Scientific Notation</th>
+                <th>Decimal Value</th>
+                <th>Context / Application Example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><b>deci</b></td><td><span class="math">d</span></td><td><span class="math">10<sup>-1</sup></span></td><td>0.1</td><td>Sound intensity measurement (<span class="math">dB</span>)</td></tr>
+            <tr><td><b>centi</b></td><td><span class="math">c</span></td><td><span class="math">10<sup>-2</sup></span></td><td>0.01</td><td>Body measurements, school rulers (<span class="math">cm</span>)</td></tr>
+            <tr><td><b>milli</b></td><td><span class="math">m</span></td><td><span class="math">10<sup>-3</sup></span></td><td>0.001</td><td>Liquid dosage, raindrop diameter (<span class="math">mL</span>, <span class="math">mm</span>)</td></tr>
+            <tr><td><b>micro</b></td><td><span class="math">&mu;</span></td><td><span class="math">10<sup>-6</sup></span></td><td>0.000001</td><td>Cell biology, bacteria dimensions (<span class="math">&mu;m</span>)</td></tr>
+            <tr><td><b>nano</b></td><td><span class="math">n</span></td><td><span class="math">10<sup>-9</sup></span></td><td>0.000000001</td><td>Semiconductor chips, light wavelengths (<span class="math">nm</span>)</td></tr>
+            <tr><td><b>pico</b></td><td><span class="math">p</span></td><td><span class="math">10<sup>-12</sup></span></td><td>0.000000000001</td><td>Electrical capacitance (<span class="math">pF</span>)</td></tr>
+            <tr><td><b>femto</b></td><td><span class="math">f</span></td><td><span class="math">10<sup>-15</sup></span></td><td>0.000000000000001</td><td>Proton/atomic nucleus diameter (<span class="math">fm</span>)</td></tr>
+            <tr><td><b>atto</b></td><td><span class="math">a</span></td><td><span class="math">10<sup>-18</sup></span></td><td>0.000000000000000001</td><td>Ultrafast laser pulses (<span class="math">attoseconds</span>)</td></tr>
+            <tr><td><b>zepto</b></td><td><span class="math">z</span></td><td><span class="math">10<sup>-21</sup></span></td><td>0.000000000000000000001</td><td>Elementary charge (&approx; 160 <span class="math">zC</span>)</td></tr>
+            <tr><td><b>yocto</b></td><td><span class="math">y</span></td><td><span class="math">10<sup>-24</sup></span></td><td>0.000000000000000000000001</td><td>Subatomic particle mass (<span class="math">yg</span>)</td></tr>
+            <tr><td><b>ronto</b></td><td><span class="math">r</span></td><td><span class="math">10<sup>-27</sup></span></td><td>0.000000000000000000000000001</td><td>Mass of a single electron (&approx; 0.91 <span class="math">rg</span>)</td></tr>
+            <tr><td><b>quecto</b></td><td><span class="math">q</span></td><td><span class="math">10<sup>-30</sup></span></td><td>0.000000000000000000000000000001</td><td>Theoretical quantum physics energy states</td></tr>
+        </tbody>
+    </table>
+
+    <div class="rule-note">
+        <b>Formatting Rules:</b> Prefixes &ge; 10<sup>6</sup> use <b>capital letters</b> (<span class="math">M, G, T, P, E, Z, Y, R, Q</span>). Prefixes &le; 10<sup>3</sup> use <b>lowercase letters</b> (<span class="math">k, h, da, d, c, m</span>, etc.).
+    </div>
+
+    <h2>2. Dimensional Analysis & Equivalence Benchmarks</h2>
+    <p>Conversions are calculated by multiplying the given metric by a conversion factor equal to 1:</p>
+
+    <div class="formula-box">
+        <span class="math">Given Quantity</span> &times; ( <span class="math">Target Unit</span> / <span class="math">Given Unit</span> ) = <span class="math">Converted Quantity</span>
+    </div>
+
+    <h3>Conversion Equivalence Benchmarks</h3>
+    <ul class="benchmarks">
+        <li><b>Intra-System (Metric Defaults):</b><br>
+            1 <span class="math">km</span> = 1,000 <span class="math">m</span> &nbsp;|&nbsp; 
+            1 <span class="math">m</span> = 100 <span class="math">cm</span> = 1,000 <span class="math">mm</span><br>
+            1 <span class="math">kg</span> = 1,000 <span class="math">g</span> &nbsp;|&nbsp; 
+            1 <span class="math">g</span> = 1,000 <span class="math">mg</span> = 1,000,000 <span class="math">&mu;g</span><br>
+            1 <span class="math">L</span> = 1,000 <span class="math">mL</span> = 1,000 <span class="math">cm<sup>3</sup></span>
+        </li>
+        <li><b>Inter-System (Metric &leftrightarrow; US Customary):</b><br>
+            <b>Length:</b> 1 <span class="math">inch</span> = 2.54 <span class="math">cm</span> (exact) &nbsp;|&nbsp; 
+            1 <span class="math">mile</span> &approx; 1.609 <span class="math">km</span> &nbsp;|&nbsp; 
+            1 <span class="math">meter</span> &approx; 3.281 <span class="math">ft</span><br>
+            <b>Mass / Weight:</b> 1 <span class="math">kg</span> &approx; 2.205 <span class="math">lbs</span> &nbsp;|&nbsp; 
+            1 <span class="math">lb</span> &approx; 453.6 <span class="math">g</span><br>
+            <b>Volume:</b> 1 <span class="math">US gal</span> &approx; 3.785 <span class="math">L</span> &nbsp;|&nbsp; 
+            1 <span class="math">fl oz</span> &approx; 29.57 <span class="math">mL</span>
+        </li>
+    </ul>
+
+    <h2>3. Step-by-Step Conversion Examples</h2>
+
+    <h3>A. Intra-System Conversions (Metric to Metric)</h3>
+    <div class="example-card">
+        <h4>1. Kilometers to Meters (3.75 km to m)</h4>
+        <b>Step 1 (Identify Given & Target):</b> Given = 3.75 <span class="math">km</span>; Target = <span class="math">m</span>.<br>
+        <b>Step 2 (Establish Equivalence Factor):</b> 1 <span class="math">km</span> = 1,000 <span class="math">m</span> &rarr; Conversion Ratio = ( 1,000 <span class="math">m</span> / 1 <span class="math">km</span> ).<br>
+        <b>Step 3 (Set up Dimensional Analysis & Cancel Units):</b><br>
+        3.75 <span class="cancel-unit">km</span> &times; ( 1,000 <span class="math">m</span> / 1 <span class="cancel-unit">km</span> )<br>
+        <b>Step 4 (Multiply & Simplify):</b> 3.75 &times; 1,000 = <b>3,750 <span class="math">m</span></b>
+    </div>
+
+    <div class="example-card">
+        <h4>2. Micrograms to Milligrams (8,200 &mu;g to mg)</h4>
+        <b>Step 1 (Identify Given & Target):</b> Given = 8,200 <span class="math">&mu;g</span>; Target = <span class="math">mg</span>.<br>
+        <b>Step 2 (Establish Equivalence Factor):</b> 1 <span class="math">mg</span> = 1,000 <span class="math">&mu;g</span> &rarr; Conversion Ratio = ( 1 <span class="math">mg</span> / 1,000 <span class="math">&mu;g</span> ).<br>
+        <b>Step 3 (Set up Dimensional Analysis & Cancel Units):</b><br>
+        8,200 <span class="cancel-unit">&mu;g</span> &times; ( 1 <span class="math">mg</span> / 1,000 <span class="cancel-unit">&mu;g</span> )<br>
+        <b>Step 4 (Divide & Simplify):</b> 8,200 &divide; 1,000 = <b>8.2 <span class="math">mg</span></b>
+    </div>
+
+    <h3>B. Inter-System Conversions (Metric &leftrightarrow; US Customary)</h3>
+    <div class="example-card">
+        <h4>1. Inches to Centimeters (14 in to cm)</h4>
+        <b>Step 1 (Identify Given & Target):</b> Given = 14 <span class="math">in</span>; Target = <span class="math">cm</span>.<br>
+        <b>Step 2 (Establish Equivalence Factor):</b> 1 <span class="math">in</span> = 2.54 <span class="math">cm</span> &rarr; Conversion Ratio = ( 2.54 <span class="math">cm</span> / 1 <span class="math">in</span> ).<br>
+        <b>Step 3 (Set up Dimensional Analysis & Cancel Units):</b><br>
+        14 <span class="cancel-unit">in</span> &times; ( 2.54 <span class="math">cm</span> / 1 <span class="cancel-unit">in</span> )<br>
+        <b>Step 4 (Multiply & Simplify):</b> 14 &times; 2.54 = <b>35.56 <span class="math">cm</span></b>
+    </div>
+
+    <div class="example-card">
+        <h4>2. Gallons to Liters (15 US gal to L)</h4>
+        <b>Step 1 (Identify Given & Target):</b> Given = 15 <span class="math">gal</span>; Target = <span class="math">L</span>.<br>
+        <b>Step 2 (Establish Equivalence Factor):</b> 1 <span class="math">gal</span> &approx; 3.785 <span class="math">L</span> &rarr; Conversion Ratio = ( 3.785 <span class="math">L</span> / 1 <span class="math">gal</span> ).<br>
+        <b>Step 3 (Set up Dimensional Analysis & Cancel Units):</b><br>
+        15 <span class="cancel-unit">gal</span> &times; ( 3.785 <span class="math">L</span> / 1 <span class="cancel-unit">gal</span> )<br>
+        <b>Step 4 (Multiply & Simplify):</b> 15 &times; 3.785 = <b>56.775 <span class="math">L</span></b>
+    </div>
+
+    <h2>4. Scientific Notation</h2>
+    <p>Scientific notation (<span class="math">a &times; 10<sup>n</sup></span>, where 1 &le; |<span class="math">a</span>| &lt; 10) simplifies extreme magnitudes:</p>
+    <ul>
+        <li><b>Microscopic:</b> Diameter of a human red blood cell = 0.000007 <span class="math">m</span> = <b>7.0 &times; 10<sup>-6</sup> <span class="math">m</span></b> (7 <span class="math">&mu;m</span>).</li>
+        <li><b>Astronomical:</b> Mean distance from Earth to the Sun = 149,600,000 <span class="math">km</span> = <b>1.496 &times; 10<sup>8</sup> <span class="math">km</span></b>.</li>
+    </ul>
+
+    <!-- Bottom Save / Print PDF Section -->
+    <div class="action-bar-container">
+        <button class="print-btn" onclick="window.print()">
+            <svg viewBox="0 0 24 24">
+                <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/>
+            </svg>
+            Save / Print as PDF
+        </button>
+    </div>
+</div>
+
+<script>
+    const unitData = {
+        length: {
+            base: 'm',
+            units: {
+                'km': { name: 'Kilometers (km)', toBase: 1000 },
+                'm': { name: 'Meters (m)', toBase: 1 },
+                'cm': { name: 'Centimeters (cm)', toBase: 0.01 },
+                'mm': { name: 'Millimeters (mm)', toBase: 0.001 },
+                'in': { name: 'Inches (in)', toBase: 0.0254 },
+                'ft': { name: 'Feet (ft)', toBase: 0.3048 },
+                'mi': { name: 'Miles (mi)', toBase: 1609.344 }
+            }
+        },
+        mass: {
+            base: 'g',
+            units: {
+                'kg': { name: 'Kilograms (kg)', toBase: 1000 },
+                'g': { name: 'Grams (g)', toBase: 1 },
+                'mg': { name: 'Milligrams (mg)', toBase: 0.001 },
+                'ug': { name: 'Micrograms (µg)', toBase: 0.000001 },
+                'lb': { name: 'Pounds (lb)', toBase: 453.59237 },
+                'oz': { name: 'Ounces (oz)', toBase: 28.349523125 }
+            }
+        },
+        volume: {
+            base: 'L',
+            units: {
+                'L': { name: 'Liters (L)', toBase: 1 },
+                'mL': { name: 'Milliliters (mL)', toBase: 0.001 },
+                'gal': { name: 'Gallons (US gal)', toBase: 3.78541 },
+                'floz': { name: 'Fluid Ounces (fl oz)', toBase: 0.0295735 }
+            }
+        }
+    };
+
+    function updateUnits() {
+        const cat = document.getElementById('category').value;
+        const fromSelect = document.getElementById('fromUnit');
+        const toSelect = document.getElementById('toUnit');
+
+        fromSelect.innerHTML = '';
+        toSelect.innerHTML = '';
+
+        const units = unitData[cat].units;
+        let keys = Object.keys(units);
+
+        keys.forEach((key, index) => {
+            let option1 = new Option(units[key].name, key);
+            let option2 = new Option(units[key].name, key);
+            fromSelect.add(option1);
+            toSelect.add(option2);
+        });
+
+        if (keys.length > 1) {
+            toSelect.selectedIndex = 1;
+        }
+    }
+
+    function calculateConversion() {
+        const cat = document.getElementById('category').value;
+        const val = parseFloat(document.getElementById('inputValue').value);
+        const fromKey = document.getElementById('fromUnit').value;
+        const toKey = document.getElementById('toUnit').value;
+
+        if (isNaN(val)) {
+            alert('Please enter a valid numeric value.');
+            return;
+        }
+
+        const catInfo = unitData[cat];
+        const fromUnitInfo = catInfo.units[fromKey];
+        const toUnitInfo = catInfo.units[toKey];
+
+        const baseVal = val * fromUnitInfo.toBase;
+        const resultVal = baseVal / toUnitInfo.toBase;
+
+        const ratioFactor = fromUnitInfo.toBase / toUnitInfo.toBase;
+
+        const stepList = document.getElementById('stepList');
+        stepList.innerHTML = `
+            <li><b>Step 1 (Identify Given & Target Units):</b> Given = <span class="step-highlight">${val} ${fromKey}</span>; Target Unit = <span class="step-highlight">${toKey}</span>.</li>
+            <li><b>Step 2 (Establish Conversion Ratio):</b> 1 ${fromKey} = ${ratioFactor.toPrecision(6)} ${toKey} &rarr; Ratio = ( ${ratioFactor.toPrecision(6)} ${toKey} / 1 ${fromKey} ).</li>
+            <li><b>Step 3 (Set up Dimensional Analysis & Cancel Units):</b><br>
+                ${val} <span class="cancel-unit">${fromKey}</span> &times; ( ${ratioFactor.toPrecision(6)} ${toKey} / 1 <span class="cancel-unit">${fromKey}</span> )
+            </li>
+            <li><b>Step 4 (Multiply/Divide & Final Answer):</b><br>
+                Calculation: ${val} &times; ${ratioFactor.toPrecision(6)} = <span class="step-highlight" style="font-size: 1.1rem;">${resultVal.toLocaleString(undefined, {maximumFractionDigits: 6})} ${toKey}</span>
+            </li>
+        `;
+
+        document.getElementById('calcOutput').style.display = 'block';
+    }
+
+    window.onload = updateUnits;
+</script>
+
+</body>
+</html>
