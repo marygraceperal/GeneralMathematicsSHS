@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surface Area and Volume - Student Study Notes</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="mathjax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --primary-color: #4a154b;
+            --secondary-color: #7c3aed;
+            --accent-color: #c084fc;
+            --light-purple: #f3e8ff;
+            --bg-color: #faf5ff;
+            --card-bg: #ffffff;
+            --text-color: #2e1065;
+            --border-color: #e9d5ff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.08);
+            border: 1px solid var(--border-color);
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+            border-radius: 12px;
+            padding: 30px 20px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+            font-size: 2.2rem;
+        }
+
+        .subtitle {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 8px;
+            margin-top: 35px;
+        }
+
+        .concept-card {
+            background-color: var(--light-purple);
+            border-left: 5px solid var(--secondary-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .shape-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .shape-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .shape-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.12);
+        }
+
+        .shape-info {
+            flex: 1;
+        }
+
+        .shape-info h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .shape-svg {
+            width: 170px;
+            height: 170px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fcfaff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 8px;
+        }
+
+        .shape-svg svg {
+            width: 100%;
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        .formula-box {
+            background-color: #faf5ff;
+            border: 1px solid var(--border-color);
+            padding: 12px 18px;
+            border-radius: 8px;
+            margin-top: 12px;
+            font-size: 1.05rem;
+        }
+
+        .exercise-container {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-top: 15px;
+        }
+
+        .exercise-title {
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+        }
+
+        .solution-box {
+            background-color: #faf5ff;
+            border-left: 3px solid var(--accent-color);
+            padding: 10px 15px;
+            margin-top: 8px;
+            font-size: 0.95rem;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .warning-box {
+            background-color: #fef3c7;
+            border-left: 5px solid #f59e0b;
+            color: #78350f;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.95rem;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        table th, table td {
+            padding: 14px 16px;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        table th {
+            background-color: var(--secondary-color);
+            color: #ffffff;
+        }
+
+        table tr:nth-child(even) {
+            background-color: var(--bg-color);
+        }
+
+        .problem-set {
+            background-color: var(--light-purple);
+            border: 2px dashed var(--accent-color);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 35px;
+        }
+
+        .problem-item {
+            margin-bottom: 20px;
+            background: #ffffff;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .problem-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 700px) {
+            .shape-card {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .shape-svg {
+                width: 150px;
+                height: 150px;
+            }
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Surface Area & Volume</h1>
+        <div class="subtitle">Student Study Notes & Discussion Sheet</div>
+    </header>
+
+    <section>
+        <h2>Key Terminology & Core Concepts</h2>
+        <div class="concept-card">
+            <ul>
+                <li>
+                    <strong>Surface Area (\(SA\)):</strong> The total area that the outer surface of a 3D object occupies. Measured in <em>square units</em> (e.g., \(\text{cm}^2\), \(\text{m}^2\)).
+                    <ul>
+                        <li><strong>Lateral Surface Area (\(LSA\)):</strong> Area of all faces excluding top and bottom bases.</li>
+                        <li><strong>Total Surface Area (\(TSA\)):</strong> Sum of the lateral area and all base areas.</li>
+                    </ul>
+                </li>
+                <li style="margin-top: 10px;">
+                    <strong>Volume (\(V\)):</strong> The total 3D space enclosed within a shape. Measured in <em>cubic units</em> (e.g., \(\text{cm}^3\), \(\text{m}^3\)).
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>3D Geometry Formulas & Exercises</h2>
+        <div class="shape-grid">
+
+            <div class="shape-card">
+                <div class="shape-info">
+                    <h3>1. Prisms</h3>
+                    <p>Polyhedron with two congruent, parallel polygonal bases connected by rectangular side faces.</p>
+                    <ul>
+                        <li><strong>\(B\):</strong> Base Area | <strong>\(P\):</strong> Base Perimeter | <strong>\(h\):</strong> Height </li>
+                    </ul>
+                    <div class="formula-box">
+                        $$\text{Volume: } V = B \times h$$
+                        $$\text{Total Surface Area: } TSA = 2B + Ph$$
+                    </div>
+
+                    <div class="exercise-container">
+                        <div class="exercise-title">Practice Exercises & Solutions:</div>
+                        
+                        <p><strong>Ex 1.1:</strong> A rectangular prism has a length of \(8\text{ cm}\), a width of \(5\text{ cm}\), and a height of \(10\text{ cm}\). Calculate its volume and total surface area.</p>
+                        <div class="solution-box">
+                            <strong>Solution:</strong><br>
+                            Base Area \(B = 8 \times 5 = 40\text{ cm}^2\)<br>
+                            Base Perimeter \(P = 2(8 + 5) = 26\text{ cm}\)<br>
+                            \(V = B \times h = 40 \times 10 = \mathbf{400\text{ cm}^3}\)<br>
+                            \(TSA = 2B + Ph = 2(40) + (26)(10) = 80 + 260 = \mathbf{340\text{ cm}^2}\)
+                        </div>
+
+                        <p style="margin-top: 12px;"><strong>Ex 1.2:</strong> A triangular prism has a right-triangular base with legs \(6\text{ m}\) and \(8\text{ m}\) (hypotenuse \(10\text{ m}\)) and height \(12\text{ m}\). Find its volume.</p>
+                        <div class="solution-box">
+                            <strong>Solution:</strong><br>
+                            Base Area \(B = \frac{1}{2} \times 6 \times 8 = 24\text{ m}^2\)<br>
+                            \(V = B \times h = 24 \times 12 = \mathbf{288\text{ m}^3}\)
+                        </div>
+
+                        <p style="margin-top: 12px;"><strong>Ex 1.3:</strong> Find the total surface area of the triangular prism in Ex 1.2.</p>
+                        <div class="solution-box">
+                            <strong>Solution:</strong><br>
+                            Base Perimeter \(P = 6 + 8 + 10 = 24\text{ m}\)<br>
+                            \(TSA = 2B + Ph = 2(24) + (24)(12) = 48 + 288 = \mathbf{336\text{ m}^2}\)
+                        </div>
+                    </div>
+                </div>
+                <div class="shape-svg">
+                    <svg viewBox="0 0 120 120">
+                        <defs>
+                            <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+                                <path d="M 0 0 L 10 5 L 0 10 z" fill="#6b21a8"/>
+                            </marker>
+                        </defs>
+                        <polygon points="20,80 50,95 80,80 50,68" fill="#e9d5ff" opacity="0.8"/>
+                        <polygon points="20,35 50,50 80,35 50,20" fill="#c084fc" opacity="0.7" stroke="#7c3aed" stroke-width="1.5"/>
+                        <line x1="20" y1="80" x2="50" y2="68" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="3,3"/>
+                        <line x1="80" y1="80" x2="50" y2="68" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="3,3"/>
+                        <line x1="50" y1="50" x2="50" y2="68" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="3,3"/>
+                        <polygon points="20,35 50,50 80,35 80,80 50,95 20,80" fill="none" stroke="#7c3aed" stroke-width="2.5" stroke-linejoin="round"/>
+                        <line x1="20" y1="35" x2="20" y2="80" stroke="#7c3aed" stroke-width="2.5"/>
+                        <line x1="50" y1="50" x2="50" y2="95" stroke="#7c3aed" stroke-width="2.5"/>
+                        <line x1="80" y1="35" x2="80" y2="80" stroke="#7c3aed" stroke-width="2.5"/>
+                        <line x1="90" y1="35" x2="90" y2="80" stroke="#6b21a8" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+                        <text x="96" y="60" font-size="11" font-weight="bold" fill="#6b21a8">h</text>
+                        <text x="47" y="37" font-size="10" font-weight="bold" fill="#4a154b">B</text>
+                        <text x="47" y="81" font-size="10" font-weight="bold" fill="#4a154b">B</text>
+                        <text x="18" y="94" font-size="10" font-style="italic" font-weight="bold" fill="#7c3aed">P (perimeter)</text>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="shape-card">
+                <div class="shape-info">
+                    <h3>2. Pyramids</h3>
+                    <p>Polyhedron formed by connecting a polygonal base to a single apex point.</p>
+                    <ul>
+                        <li><strong>\(B\):</strong> Base Area | <strong>\(P\):</strong> Base Perimeter | <strong>\(h\):</strong> Height | <strong>\(l\):</strong> Slant Height </li>
+                    </ul>
+                    <div class="formula-box">
+                        $$\text{Volume: } V = \frac{1}{3} B h$$
+                        $$\text{Total Surface Area: } TSA = B + \frac{1}{2} P l$$
+                    </div>
+
+                    <div class="exercise-container">
+                        <div class="exercise-title">Practice Exercises & Solutions:</div>
+
+                        <p><strong>Ex 2.1:</strong> A square pyramid has a base side length of \(6\text{ cm}\) and a height of \(4\text{ cm}\). Calculate its volume.</p>
+                        <div class="solution-box">
+                            <strong>Solution:</strong><br>
+                            Base Area \(B = 6^2 = 36\text{ cm}^2\)<br>
+                            \(V = \frac{1}{3} B h = \frac{1}{3} (36)(4) = \mathbf{48\text{ cm}^3}\)
+                        </div>
+
+                        <p style="margin-top: 12px;"><strong>Ex 2.2:</strong> Find the slant height \(l\) and total surface area of the square pyramid in Ex 2.1.</p>
+                        <div class="solution-box">
+                            <strong>Solution:</strong><br>
+                            Slant height \(l = \sqrt{h^2 + (s/2)^2} = \sqrt{4^2 + 3^2} = \sqrt{25} = 5\text{ cm}\)<br>
+                            Perimeter \(P = 4 \times 6 = 24\text{ cm}\)<br>
+                            \(TSA = B + \frac{1}{2} Pl = 36 + \frac{1}{2}(24)(5) = 36 + 60 = \mathbf{96\text{ cm}^2}\)
+                        </div>
+
+                        <p style="margin-top: 12px;"><strong>Ex 2.3:</strong> A rectangular pyramid has base dimensions \(10\text{ m} \times 6\text{ m}\) and height \(9\text{ m}\). Calculate its volume.</p>
+                        <div class="solution-box">
+                            <strong>Solution:</strong><br>
+                            Base Area \(B = 10 \times 6 = 60\text{ m}^2\)<br>
+                            \(V = \frac{1}{3} B h = \frac{1}{3}(60)(9) = \mathbf{180\text{ m}^3}\)
+                        </div>
+                    </div>
+                </div>
+                <div class="shape-svg">
+                    <svg viewBox="0 0 120 120">
+                        <polygon points="20,85 60,102 100,85 60,70" fill="#e9d5ff" opacity="0.6"/>
+                        <line x1="20" y1="85" x2="60" y2="70" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="3,3"/>
+                        <line x1="100" y1="85" x2="60" y2="70" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="3,3"/>
+                        <line x1="20" y1="85" x2="60" y2="102" stroke="#7c3aed" stroke-width="2.5"/>
+                        <line x1="60" y1="102" x2="100" y2="85" stroke="#7c3aed" stroke-width="2.5"/>
+                        <polygon points="60,15 20,85 60,102" fill="#c084fc" opacity="0.3"/>
+                        <polygon points="60,15 60,102 100,85" fill="#a855f7" opacity="0.4"/>
+                        <line x1="60" y1="15" x2="20" y2="85" stroke="#7c3aed" stroke-width="2.5"/>
+                        <line x1="60" y1="15" x2="60" y2="102" stroke="#7c3aed" stroke-width="2.5"/>
+                        <line x1="60" y1="15" x2="100" y2="85" stroke="#7c3aed" stroke-width="2.5"/>
+                        <line x1="60" y1="15" x2="60" y2="85" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="2,2"/>
+                        <polyline points="60,80 65,80 65,85" fill="none" stroke="#dc2626" stroke-width="1"/>
+                        <text x="49" y="55" font-size="10" font-weight="bold" fill="#dc2626">h</text>
+                        <line x1="60" y1="15" x2="80" y2="93.5" stroke="#2563eb" stroke-width="1.5"/>
+                        <text x="73" y="52" font-size="10" font-weight="bold" fill="#2563eb">l</text>
+                        <text x="54" y="10" font-size="10" font-weight="bold" fill="#4a154b">Apex</text>
+                        <text x="56" y="94" font-size="10" font-weight="bold" fill="#4a154b">B</text>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="shape-card">
+                <div class="shape-info">
+                    <h3>3. Cylinders</h3>
+                    <p>3D solid with two parallel, congruent circular bases connected by a curved surface.</p>
+                    <ul>
+                        <li><strong>\(r\):</strong> Radius | <strong>\(h\):</strong> Height </li>
+                    </ul>
+                    <div class="formula-box">
+                        $$\text{Volume: } V = \pi r^2 h$$
+                        $$\text{Total Surface Area: } TSA = 2\pi r h + 2\pi r^2$$
+                    </div>
+
+                    <div class="exercise-container">
+                        <div class="exercise-title">Practice Exercises & Solutions:</div>
+
+                        <p><strong>Ex 3.1:</strong> A cylinder has a radius of \(3\text{ cm}\) and a height of \(7\text{ cm}\). Calculate its volume in terms of \(\pi\) and to 2 decimal places.</p>
+                        <div class="solution-box">
+                            <strong>Solution:</strong><br>
+                            \(V = \pi r^2 h = \pi (3)^2 (7) = 63\pi\text{ cm}^3 \approx \mathbf{197.92\text{ cm}^3}\)
+                        </div>
+
+                        <p style="margin-top: 12px;"><strong>Ex 3.2:</strong> Calculate the total surface area of the cylinder in Ex 3.1.</p>
+                        <div class="solution-box">
+                            <strong>Solution:</strong><br>
+                            \(TSA = 2\pi r h + 2\pi r^2 = 2\pi(3)(7) + 2\pi(3)^2 = 42\pi + 18\pi = 60\pi\text{ cm}^2 \approx \mathbf{188.50\text{ cm}^2}\)
+                        </div>
+
+                        <p style="margin-top: 12px;"><strong>Ex 3.3:</strong> A cylinder with radius \(5\text{ m}\) has a volume of \(300\pi\text{ m}^3\). Find its height.</p>
+                        <div class="solution-box">
+                            <strong>Solution:</strong><br>
+                            \(V = \pi r^2 h \Rightarrow 300\pi = \pi (5^2) h \Rightarrow 300 = 25h \Rightarrow h = \mathbf{12\text{ m}}\)
+                        </div>
+                    </div>
+                </div>
+                <div class="shape-svg">
+                    <svg viewBox="0 0 120 120">
+                        <path d="M25,25 L25,90 C25,102 95,102 95,90 L95,25 Z" fill="#f3e8ff" opacity="0.6"/>
+                        <line x1="25" y1="25" x2="25" y2="90" stroke="#7c3aed" stroke-width="2.5"/>
+                        <line x1="95" y1="25" x2="95" y2="90" stroke="#7c3aed" stroke-width="2.5"/>
+                        <ellipse cx="60" cy="25" rx="35" ry="12" fill="#c084fc" stroke="#7c3aed" stroke-width="2.5"/>
+                        <path d="M25,90 A35,12 0 0,0 95,90" fill="none" stroke="#7c3aed" stroke-width="2.5"/>
+                        <path d="M25,90 A35,12 0 0,1 95,90" fill="none" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="3,3"/>
+                        <line x1="60" y1="25" x2="95" y2="25" stroke="#dc2626" stroke-width="1.5"/>
+                        <circle cx="60" cy="25" r="2" fill="#dc2626"/>
+                        <text x="73" y="21" font-size="10" font-weight="bold" fill="#dc2626">r</text>
+                        <line x1="60" y1="25" x2="60" y2="90" stroke="#6b21a8" stroke-width="1.5" stroke-dasharray="3,3"/>
+                        <text x="63" y="60" font-size="10" font-weight="bold" fill="#6b21a8">h</text>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="shape-card">
+                <div class="shape-info">
+                    <h3>4. Cones</h3>
+                    <p>3D shape with a circular base that narrows smoothly to a single point called the apex.</p>
+                    <ul>
+                        <li><strong>\(r\):</strong> Radius | <strong>\(h\):</strong> Height | <strong>\(l\):</strong> Slant Height (\(\sqrt{r^2+h^2}\)) </li>
+                    </ul>
+                    <div class="formula-box">
+                        $$\text{Volume: } V = \frac{1}{3} \pi r^2 h$$
+                        $$\text{Total Surface Area: } TSA = \pi r l + \pi r^2$$
+                    </div>
+
+                    <div class="exercise-container">
+                        <div class="exercise-title">Practice Exercises & Solutions:</div>
+
+                        <p><strong>Ex 4.1:</strong> A cone has a radius of \(6\text{ cm}\) and a height of \(8\text{ cm}\). Calculate its volume.</p>
+                        <div class="solution-box">
+                            <strong>Solution:</strong><br>
+                            \(V = \frac{1}{3} \pi r^2 h = \frac{1}{3} \pi (6^2)(8) = 96\pi\text{ cm}^3 \approx \mathbf{301.59\text{ cm}^3}\)
+                        </div>
+
+                        <p style="margin-top: 12px;"><strong>Ex 4.2:</strong> Find the slant height \(l\) and total surface area for the cone in Ex 4.1.</p>
+                        <div class="solution-box">
+                            <strong>Solution:</strong><br>
+                            Slant height \(l = \sqrt{r^2 + h^2} = \sqrt{6^2 + 8^2} = \sqrt{100} = 10\text{ cm}\)<br>
+                            \(TSA = \pi r l + \pi r^2 = \pi(6)(10) + \pi(6)^2 = 60\pi + 36\pi = 96\pi\text{ cm}^2 \approx \mathbf{301.59\text{ cm}^2}\)
+                        </div>
+
+                        <p style="margin-top: 12px;"><strong>Ex 4.3:</strong> If a cone has a base area of \(25\pi\text{ cm}^2\) and a slant height of \(13\text{ cm}\), find its lateral surface area.</p>
+                        <div class="solution-box">
+                            <strong>Solution:</strong><br>
+                            Base Area \(= \pi r^2 = 25\pi \Rightarrow r = 5\text{ cm}\)<br>
+                            \(LSA = \pi r l = \pi (5)(13) = 65\pi\text{ cm}^2 \approx \mathbf{204.20\text{ cm}^2}\)
+                        </div>
+                    </div>
+                </div>
+                <div class="shape-svg">
+                    <svg viewBox="0 0 120 120">
+                        <polygon points="60,15 25,90 95,90" fill="#e9d5ff" opacity="0.5"/>
+                        <line x1="60" y1="15" x2="25" y2="90" stroke="#7c3aed" stroke-width="2.5"/>
+                        <line x1="60" y1="15" x2="95" y2="90" stroke="#7c3aed" stroke-width="2.5"/>
+                        <path d="M25,90 A35,12 0 0,0 95,90" fill="none" stroke="#7c3aed" stroke-width="2.5"/>
+                        <path d="M25,90 A35,12 0 0,1 95,90" fill="none" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="3,3"/>
+                        <line x1="60" y1="15" x2="60" y2="90" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="2,2"/>
+                        <polyline points="60,84 66,84 66,90" fill="none" stroke="#dc2626" stroke-width="1"/>
+                        <text x="48" y="55" font-size="10" font-weight="bold" fill="#dc2626">h</text>
+                        <line x1="60" y1="90" x2="95" y2="90" stroke="#dc2626" stroke-width="1.5"/>
+                        <circle cx="60" cy="90" r="2" fill="#dc2626"/>
+                        <text x="73" y="103" font-size="10" font-weight="bold" fill="#dc2626">r</text>
+                        <text x="81" y="52" font-size="10" font-weight="bold" fill="#2563eb">l</text>
+                        <text x="53" y="10" font-size="10" font-weight="bold" fill="#4a154b">Apex</text>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="shape-card">
+                <div class="shape-info">
+                    <h3>5. Spheres</h3>
+                    <p>Perfectly round 3D solid where every surface point is equidistant from its center.</p>
+                    <ul>
+                        <li><strong>\(r\):</strong> Radius </li>
+                    </ul>
+                    <div class="formula-box">
+                        $$\text{Volume: } V = \frac{4}{3} \pi r^3$$
+                        $$\text{Total Surface Area: } TSA = 4 \pi r^2$$
+                    </div>
+
+                    <div class="exercise-container">
+                        <div class="exercise-title">Practice Exercises & Solutions:</div>
+
+                        <p><strong>Ex 5.1:</strong> A sphere has a radius of \(3\text{ cm}\). Calculate its volume.</p>
+                        <div class="solution-box">
+                            <strong>Solution:</strong><br>
+                            \(V = \frac{4}{3} \pi r^3 = \frac{4}{3} \pi (3^3) = \frac{4}{3}(27)\pi = 36\pi\text{ cm}^3 \approx \mathbf{113.10\text{ cm}^3}\)
+                        </div>
+
+                        <p style="margin-top: 12px;"><strong>Ex 5.2:</strong> Calculate the surface area of the sphere in Ex 5.1.</p>
+                        <div class="solution-box">
+                            <strong>Solution:</strong><br>
+                            \(TSA = 4\pi r^2 = 4\pi(3^2) = 36\pi\text{ cm}^2 \approx \mathbf{113.10\text{ cm}^2}\)
+                        </div>
+
+                        <p style="margin-top: 12px;"><strong>Ex 5.3:</strong> A hemisphere (half a sphere) has a radius of \(6\text{ m}\). Find its total surface area including its circular base.</p>
+                        <div class="solution-box">
+                            <strong>Solution:</strong><br>
+                            \(TSA_{\text{hemisphere}} = 2\pi r^2 + \pi r^2 = 3\pi r^2 = 3\pi (6^2) = 108\pi\text{ m}^2 \approx \mathbf{339.29\text{ m}^2}\)
+                        </div>
+                    </div>
+                </div>
+                <div class="shape-svg">
+                    <svg viewBox="0 0 120 120">
+                        <defs>
+                            <radialGradient id="sphereGrad" cx="35%" cy="35%" r="65%">
+                                <stop offset="0%" stop-color="#f3e8ff"/>
+                                <stop offset="60%" stop-color="#c084fc"/>
+                                <stop offset="100%" stop-color="#7c3aed"/>
+                            </radialGradient>
+                        </defs>
+                        <circle cx="60" cy="60" r="42" fill="url(#sphereGrad)" stroke="#7c3aed" stroke-width="2.5"/>
+                        <path d="M18,60 A42,14 0 0,0 102,60" fill="none" stroke="#7c3aed" stroke-width="1.5"/>
+                        <path d="M18,60 A42,14 0 0,1 102,60" fill="none" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="3,3"/>
+                        <line x1="60" y1="60" x2="98" y2="45" stroke="#dc2626" stroke-width="2"/>
+                        <circle cx="60" cy="60" r="2.5" fill="#dc2626"/>
+                        <circle cx="98" cy="45" r="2" fill="#dc2626"/>
+                        <text x="76" y="47" font-size="11" font-weight="bold" fill="#dc2626">r</text>
+                        <text x="52" y="73" font-size="10" font-weight="bold" fill="#4a154b">Center (C)</text>
+                    </svg>
+                </div>
+            </div>
+
+        </div>
+    </section>
+<!-- Review Link Section -->
+<p>
+  <a href="https://marygraceperal.github.io/GeneralMathematicsSHS/Review-Area" target="_blank" rel="noopener noreferrer">
+    Review Study Guide Before Starting
+  </a>
+</p>
+
+<!-- Problem Set Section -->
+<section id="problem-set">
+  <h2>Problem Set</h2>
+  <!-- Your problems go here -->
+</section>
+    <section>
+        <h2>Quick Reference Table</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Shape</th>
+                    <th>Volume (\(V\))</th>
+                    <th>Total Surface Area (\(TSA\))</th>
+                    <th>Key Variables</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Prism</strong></td>
+                    <td>\(V = B h\)</td>
+                    <td>\(TSA = 2B + Ph\)</td>
+                    <td>\(B =\) Base Area, \(P =\) Perimeter, \(h =\) height</td>
+                </tr>
+                <tr>
+                    <td><strong>Pyramid</strong></td>
+                    <td>\(V = \frac{1}{3} B h\)</td>
+                    <td>\(TSA = B + \frac{1}{2} Pl\)</td>
+                    <td>\(B =\) Base Area, \(l =\) slant height</td>
+                </tr>
+                <tr>
+                    <td><strong>Cylinder</strong></td>
+                    <td>\(V = \pi r^2 h\)</td>
+                    <td>\(TSA = 2\pi r h + 2\pi r^2\)</td>
+                    <td>\(r =\) radius, \(h =\) height</td>
+                </tr>
+                <tr>
+                    <td><strong>Cone</strong></td>
+                    <td>\(V = \frac{1}{3}\pi r^2 h\)</td>
+                    <td>\(TSA = \pi r l + \pi r^2\)</td>
+                    <td>\(r =\) radius, \(l =\) slant height</td>
+                </tr>
+                <tr>
+                    <td><strong>Sphere</strong></td>
+                    <td>\(V = \frac{4}{3}\pi r^3\)</td>
+                    <td>\(TSA = 4\pi r^2\)</td>
+                    <td>\(r =\) radius</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>Composite Solids (Combinations)</h2>
+        <p>A composite solid is created by joining two or more 3D shapes together.</p>
+
+        <h3>Calculating Composite Volume</h3>
+        <ul>
+            <li><strong>Additive Solids:</strong> Calculate individual volumes and add them together (\(V_{\text{total}} = V_1 + V_2\)).</li>
+            <li><strong>Hollowed Solids:</strong> Subtract the removed inner volume from the total outer volume (\(V_{\text{total}} = V_{\text{outer}} - V_{\text{inner}}\)).</li>
+        </ul>
+
+        <div class="warning-box">
+            <strong>⚠️ Important Surface Area Rule:</strong><br>
+            Do <strong>NOT</strong> simply add the total surface areas of combined shapes. Any internal connected faces are <strong>hidden</strong> and must be excluded from the total surface area calculation.
+        </div>
+    </section>
+
+    <section class="problem-set">
+        <h2>Discussion & Practice Problems</h2>
+
+        <div class="problem-item">
+            <div class="problem-title">1. Comparison Challenge</div>
+            <p>A cylinder and a cone share the exact same radius \(r\) and height \(h\). What is the ratio of the cone's volume to the cylinder's volume? Explain why this relationship exists.</p>
+        </div>
+
+        <div class="problem-item">
+            <div class="problem-title">2. Capsule Problem (Hemispheres + Cylinder)</div>
+            <p>A medicine pill is shaped like a cylinder with a hemisphere attached to both ends. The overall length is \(14\text{ mm}\) and the cylindrical radius is \(3\text{ mm}\).</p>
+            <ul>
+                <li><strong>a.</strong> Find the total volume of the capsule.</li>
+                <li><strong>b.</strong> Find the total exterior surface area.</li>
+            </ul>
+        </div>
+
+        <div class="problem-item">
+            <div class="problem-title">3. Silo Problem (Cone + Cylinder)</div>
+            <p>A silo consists of a cylindrical body topped by a conical roof. Radius = \(4\text{ m}\), cylinder height = \(10\text{ m}\), cone height = \(3\text{ m}\).</p>
+            <ul>
+                <li><strong>a.</strong> Calculate the slant height of the roof.</li>
+                <li><strong>b.</strong> Calculate the surface area that needs painting (excluding the base on the ground).</li>
+            </ul>
+        </div>
+    </section>
+</div>
+<section class="answer-key" style="margin-top: 40px; padding: 25px; border-top: 2px dashed #3b82f6; background-color: #f8fafc; border-radius: 8px;">
+    <h2 style="color: #1e3a8a; margin-top: 0;">Answer Key & Detailed Solutions</h2>
+
+    <div class="solution-item" style="margin-bottom: 20px;">
+        <h3 style="color: #2563eb; margin-bottom: 5px;">1. Comparison Challenge</h3>
+        <p><strong>Answer:</strong> The ratio of the cone's volume to the cylinder's volume is <strong>1 : 3</strong> (or \(\frac{1}{3}\)).</p>
+        <p><strong>Explanation:</strong></p>
+        <ul>
+            <li>Volume of a Cylinder: \(V_{\text{cylinder}} = \pi r^2 h\)</li>
+            <li>Volume of a Cone: \(V_{\text{cone}} = \frac{1}{3}\pi r^2 h\)</li>
+            <li>Ratio: \(\frac{V_{\text{cone}}}{V_{\text{cylinder}}} = \frac{\frac{1}{3}\pi r^2 h}{\pi r^2 h} = \frac{1}{3}\)</li>
+        </ul>
+        <p>This relationship exists because a cone tapers uniformly from a circular base to a point (apex), taking up exactly one-third of the total space contained within a cylinder of equal base area and height.</p>
+    </div>
+
+    <div class="solution-item" style="margin-bottom: 20px;">
+        <h3 style="color: #2563eb; margin-bottom: 5px;">2. Capsule Problem (Hemispheres + Cylinder)</h3>
+        <p><strong>Given Parameters:</strong> </p>
+        <ul>
+            <li>Radius (\(r\)) = \(3\text{ mm}\) </li>
+            <li>Total Length = \(14\text{ mm}\) </li>
+            <li>Height of Cylinder (\(h\)) = Total Length \(- 2(r) = 14 - 2(3) = 8\text{ mm}\)</li>
+            <li>Two hemispheres combine to form <strong>one full sphere</strong> of radius \(r = 3\text{ mm}\).</li>
+        </ul>
+
+        <p><strong>a. Total Volume (\(V_{\text{total}}\)):</strong> </p>
+        <p>
+            $$V_{\text{sphere}} = \frac{4}{3}\pi r^3 = \frac{4}{3}\pi (3)^3 = 36\pi\text{ mm}^3$$<br>
+            $$V_{\text{cylinder}} = \pi r^2 h = \pi (3)^2 (8) = 72\pi\text{ mm}^3$$<br>
+            $$V_{\text{total}} = 36\pi + 72\pi = \mathbf{108\pi\text{ mm}^3 \approx 339.29\text{ mm}^3}$$
+        </p>
+
+        <p><strong>b. Total Exterior Surface Area (\(SA_{\text{total}}\)):</strong> </p>
+        <p><em>Note: The interior circular bases where the cylinder joins the hemispheres are hidden and excluded.</em></p>
+        <p>
+            $$SA_{\text{sphere}} = 4\pi r^2 = 4\pi (3)^2 = 36\pi\text{ mm}^2$$<br>
+            $$LSA_{\text{cylinder}} = 2\pi r h = 2\pi (3)(8) = 48\pi\text{ mm}^2$$<br>
+            $$SA_{\text{total}} = 36\pi + 48\pi = \mathbf{84\pi\text{ mm}^2 \approx 263.89\text{ mm}^2}$$
+        </p>
+    </div>
+
+    <div class="solution-item">
+        <h3 style="color: #2563eb; margin-bottom: 5px;">3. Silo Problem (Cone + Cylinder)</h3>
+        <p><strong>Given Parameters:</strong> </p>
+        <ul>
+            <li>Radius (\(r\)) = \(4\text{ m}\) </li>
+            <li>Cylinder Height (\(h_{\text{cyl}}\)) = \(10\text{ m}\) </li>
+            <li>Cone Height (\(h_{\text{cone}}\)) = \(3\text{ m}\) </li>
+        </ul>
+
+        <p><strong>a. Slant Height of Roof (\(l\)):</strong> </p>
+        <p>
+            $$l = \sqrt{r^2 + h_{\text{cone}}^2} = \sqrt{4^2 + 3^2} = \sqrt{16 + 9} = \sqrt{25} = \mathbf{5\text{ m}}$$
+        </p>
+
+        <p><strong>b. Surface Area to Paint (excluding base on the ground):</strong> </p>
+        <p><em>Area consists of the Lateral Area of the conical roof + Lateral Area of the cylindrical body:</em></p>
+        <p>
+            $$LSA_{\text{cone}} = \pi r l = \pi (4)(5) = 20\pi\text{ m}^2$$<br>
+            $$LSA_{\text{cylinder}} = 2\pi r h_{\text{cyl}} = 2\pi (4)(10) = 80\pi\text{ m}^2$$<br>
+            $$SA_{\text{paint}} = 20\pi + 80\pi = \mathbf{100\pi\text{ m}^2 \approx 314.16\text{ m}^2}$$
+        </p>
+    </div>
+
+</body>
+</html>
