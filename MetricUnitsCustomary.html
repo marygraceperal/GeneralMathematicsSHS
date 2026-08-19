@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Measurement Systems & Unit Conversions - Mathematics</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="mathjax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --primary-color: #5e35b1;
+            --primary-light: #ede7f6;
+            --secondary-color: #3949ab;
+            --text-dark: #2c3e50;
+            --bg-light: #f8f9fa;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --accent-green: #2e7d32;
+            --accent-green-bg: #e8f5e9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        header {
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+            font-size: 2em;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9em;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.2s, transform 0.1s;
+            text-decoration: none;
+        }
+
+        .action-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .action-btn.secondary {
+            background-color: #5c6bc0;
+        }
+
+        .action-btn.secondary:hover {
+            background-color: #3f51b5;
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 15px;
+            font-size: 0.95em;
+            color: #666;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .meta-item {
+            background: var(--primary-light);
+            padding: 4px 12px;
+            border-radius: 15px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        h2 {
+            color: var(--secondary-color);
+            border-left: 4px solid var(--primary-color);
+            padding-left: 10px;
+            margin-top: 35px;
+        }
+
+        .concept-box {
+            background-color: var(--primary-light);
+            border-left: 5px solid var(--primary-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .example-box {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-top: 4px solid var(--secondary-color);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .example-title {
+            font-weight: bold;
+            color: var(--secondary-color);
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .solution {
+            background-color: #f1f3f5;
+            padding: 18px;
+            border-radius: 6px;
+            margin-top: 15px;
+        }
+
+        .formula-card {
+            text-align: center;
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px dashed var(--primary-color);
+            margin: 15px 0;
+        }
+
+        /* Live Calculator Widget Styling */
+        .calc-widget {
+            background-color: #ffffff;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .calc-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.05em;
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .calc-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .calc-group label {
+            font-size: 0.85em;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 4px;
+        }
+
+        .calc-group input, .calc-group select {
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+        .calc-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            font-size: 0.95em;
+            transition: background 0.2s;
+        }
+
+        .calc-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .calc-result {
+            margin-top: 15px;
+            background-color: var(--accent-green-bg);
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        ol, ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Print Optimization */
+        @media print {
+            body {
+                background-color: #ffffff;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+                max-width: 100%;
+            }
+            .no-print, .action-buttons {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="header-top">
+            <h1>📏 Measurement Systems & Unit Conversions</h1>
+            <div class="action-buttons no-print">
+                <button class="action-btn" onclick="downloadPage()">📥 Download for Offline Use</button>
+                <button class="action-btn secondary" onclick="window.print()">🖨️ Print / PDF</button>
+            </div>
+        </div>
+        <div class="meta-info">
+            <span class="meta-item">Mathematics Reference</span>
+            <span class="meta-item">Metric & US Customary Systems</span>
+            <span class="meta-item">Interactive Dynamic Calculators</span>
+        </div>
+    </header>
+
+    <section id="introduction">
+        <h2>1. Introduction to Measurement Systems</h2>
+        <p>Unit conversion is a fundamental mathematical skill used across science, engineering, trades, and daily life. Modern measurements are predominantly based on two systems: the <strong>Metric System (SI)</strong> and the <strong>US Customary System</strong>. Mastering conversions requires understanding proportional scaling and dimensional analysis.</p>
+        
+        <div class="concept-box">
+            <strong>Key Concept: Dimensional Analysis</strong><br>
+            Dimensional analysis (the factor-label method) involves multiplying a value by a fraction equal to 1 (a conversion factor) so that undesirable units cancel out, leaving the target unit intact.
+        </div>
+    </section>
+
+    <section id="metric-system">
+        <h2>2. The Metric System (International System of Units)</h2>
+        <p>The metric system is decimal-based, making conversions straightforward by shifting decimal places using powers of 10.</p>
+
+        <h3>Standard Metric Prefixes</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Prefix</th>
+                    <th>Symbol</th>
+                    <th>Factor</th>
+                    <th>Scientific Notation</th>
+                    <th>Example Base Unit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Kilo-</strong></td>
+                    <td>k</td>
+                    <td>1,000</td>
+                    <td>\(10^3\)</td>
+                    <td>Kilometer (km)</td>
+                </tr>
+                <tr>
+                    <td><strong>Hecto-</strong></td>
+                    <td>h</td>
+                    <td>100</td>
+                    <td>\(10^2\)</td>
+                    <td>Hectopascal (hPa)</td>
+                </tr>
+                <tr>
+                    <td><strong>Deca-</strong></td>
+                    <td>da</td>
+                    <td>10</td>
+                    <td>\(10^1\)</td>
+                    <td>Decagram (dag)</td>
+                </tr>
+                <tr>
+                    <td><strong>(Base Unit)</strong></td>
+                    <td>—</td>
+                    <td>1</td>
+                    <td>\(10^0\)</td>
+                    <td>Meter (m), Gram (g), Liter (L)</td>
+                </tr>
+                <tr>
+                    <td><strong>Deci-</strong></td>
+                    <td>d</td>
+                    <td>0.1</td>
+                    <td>\(10^{-1}\)</td>
+                    <td>Deciliter (dL)</td>
+                </tr>
+                <tr>
+                    <td><strong>Centi-</strong></td>
+                    <td>c</td>
+                    <td>0.01</td>
+                    <td>\(10^{-2}\)</td>
+                    <td>Centimeter (cm)</td>
+                </tr>
+                <tr>
+                    <td><strong>Milli-</strong></td>
+                    <td>m</td>
+                    <td>0.001</td>
+                    <td>\(10^{-3}\)</td>
+                    <td>Milligram (mg)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="calc-widget">
+            <div class="calc-title">🧮 Live Interactive Calculator: Metric Converter</div>
+            <div class="calc-grid">
+                <div class="calc-group">
+                    <label>Value:</label>
+                    <input type="number" id="metric_val" value="4.5" placeholder="e.g. 4.5">
+                </div>
+                <div class="calc-group">
+                    <label>From Prefix:</label>
+                    <select id="metric_from">
+                        <option value="1000" selected>Kilo- (k)</option>
+                        <option value="1">Base Unit (m, g, L)</option>
+                        <option value="0.01">Centi- (c)</option>
+                        <option value="0.001">Milli- (m)</option>
+                    </select>
+                </div>
+                <div class="calc-group">
+                    <label>To Prefix:</label>
+                    <select id="metric_to">
+                        <option value="1000">Kilo- (k)</option>
+                        <option value="1" selected>Base Unit (m, g, L)</option>
+                        <option value="0.01">Centi- (c)</option>
+                        <option value="0.001">Milli- (m)</option>
+                    </select>
+                </div>
+            </div>
+            <button class="calc-btn" onclick="convertMetric()">Convert Metric Units</button>
+            <div class="calc-result" id="metric_result">Converted Result: 4,500 Base Units</div>
+        </div>
+
+        <div class="example-box">
+            <div class="example-title">Example 1: Kilometers to Meters</div>
+            <p><strong>Problem:</strong> Convert <strong>4.5 km</strong> into meters.</p>
+
+            <div class="solution">
+                <strong>Step-by-step Solution:</strong>
+                <ol>
+                    <li><strong>Identify the conversion factor:</strong> \(1 \text{ km} = 1,000 \text{ m}\)</li>
+                    <li><strong>Set up dimensional analysis:</strong> \(4.5 \text{ km} \times \left( \frac{1000 \text{ m}}{1 \text{ km}} \right)\)</li>
+                    <li><strong>Calculate:</strong> \(4.5 \times 1000 = \mathbf{4,500 \text{ m}}\)</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <section id="us-customary">
+        <h2>3. US Customary System</h2>
+        <p>The US Customary system relies on specific historical scaling factors between units rather than uniform powers of 10.</p>
+
+        <h3>Common Customary Equivalences</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Unit</th>
+                    <th>Customary Equivalence</th>
+                    <th>Metric Equivalent (Approx.)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="2"><strong>Length</strong></td>
+                    <td>Foot (ft)</td>
+                    <td>\(1 \text{ ft} = 12 \text{ in}\)</td>
+                    <td>\(1 \text{ ft} \approx 30.48 \text{ cm}\)</td>
+                </tr>
+                <tr>
+                    <td>Mile (mi)</td>
+                    <td>\(1 \text{ mi} = 5,280 \text{ ft}\)</td>
+                    <td>\(1 \text{ mi} \approx 1.609 \text{ km}\)</td>
+                </tr>
+                <tr>
+                    <td><strong>Mass / Weight</strong></td>
+                    <td>Pound (lb)</td>
+                    <td>\(1 \text{ lb} = 16 \text{ oz}\)</td>
+                    <td>\(1 \text{ lb} \approx 0.4536 \text{ kg}\)</td>
+                </tr>
+                <tr>
+                    <td><strong>Volume</strong></td>
+                    <td>Gallon (gal)</td>
+                    <td>\(1 \text{ gal} = 4 \text{ qt} = 128 \text{ fl oz}\)</td>
+                    <td>\(1 \text{ gal} \approx 3.785 \text{ L}\)</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="inter-system">
+        <h2>4. Inter-System Conversions (Customary &harr; Metric)</h2>
+        <p>Converting between US Customary and Metric systems requires standard conversion constants.</p>
+
+        <div class="formula-card">
+            \[ \text{Target Value} = \text{Given Value} \times \text{Conversion Factor} \]
+            <p style="font-size: 0.9em; margin-top: 8px; color: #555;">
+                Key Factors: \(1 \text{ in} = 2.54 \text{ cm}\) | \(1 \text{ mi} \approx 1.609 \text{ km}\) | \(1 \text{ lb} \approx 0.4536 \text{ kg}\) | \(1 \text{ gal} \approx 3.785 \text{ L}\)
+            </p>
+        </div>
+
+        <div class="calc-widget">
+            <div class="calc-title">🧮 Live Interactive Calculator: Inter-System Converter</div>
+            <div class="calc-grid">
+                <div class="calc-group">
+                    <label>Value:</label>
+                    <input type="number" id="inter_val" value="5" placeholder="e.g. 5">
+                </div>
+                <div class="calc-group">
+                    <label>Conversion Type:</label>
+                    <select id="inter_type">
+                        <option value="mi_km" selected>Miles &rarr; Kilometers</option>
+                        <option value="km_mi">Kilometers &rarr; Miles</option>
+                        <option value="lb_kg">Pounds &rarr; Kilograms</option>
+                        <option value="kg_lb">Kilograms &rarr; Pounds</option>
+                        <option value="gal_l">Gallons &rarr; Liters</option>
+                        <option value="l_gal">Liters &rarr; Gallons</option>
+                    </select>
+                </div>
+            </div>
+            <button class="calc-btn" onclick="convertInterSystem()">Convert Units</button>
+            <div class="calc-result" id="inter_result">Converted Result: 8.05 km</div>
+        </div>
+
+        <div class="example-box">
+            <div class="example-title">Example 2: Miles to Kilometers</div>
+            <p><strong>Problem:</strong> Convert <strong>5 miles</strong> into kilometers.</p>
+
+            <div class="solution">
+                <strong>Step-by-step Solution:</strong>
+                <ol>
+                    <li><strong>Given:</strong> Value \(= 5 \text{ mi}\), Factor \(\approx 1.60934 \text{ km/mi}\)</li>
+                    <li><strong>Formula:</strong> \(5 \text{ mi} \times 1.60934 \frac{\text{km}}{\text{mi}}\)</li>
+                    <li><strong>Calculation:</strong> \(5 \times 1.60934 = \mathbf{8.0467 \text{ km}}\)</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <section id="summary">
+        <h2>5. Summary of Key Conversion Constants</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Dimension</th>
+                    <th>From System</th>
+                    <th>To System</th>
+                    <th>Factor / Equivalence</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Length</strong></td>
+                    <td>US Customary</td>
+                    <td>Metric</td>
+                    <td>\(1 \text{ in} = 2.54 \text{ cm}\)</td>
+                </tr>
+                <tr>
+                    <td><strong>Length</strong></td>
+                    <td>US Customary</td>
+                    <td>Metric</td>
+                    <td>\(1 \text{ mi} \approx 1.60934 \text{ km}\)</td>
+                </tr>
+                <tr>
+                    <td><strong>Mass</strong></td>
+                    <td>US Customary</td>
+                    <td>Metric</td>
+                    <td>\(1 \text{ lb} \approx 0.45359 \text{ kg}\)</td>
+                </tr>
+                <tr>
+                    <td><strong>Volume</strong></td>
+                    <td>US Customary</td>
+                    <td>Metric</td>
+                    <td>\(1 \text{ gal} \approx 3.78541 \text{ L}\)</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+
+<script>
+    // Live Calculator Functions
+    function convertMetric() {
+        const val = parseFloat(document.getElementById('metric_val').value) || 0;
+        const fromFactor = parseFloat(document.getElementById('metric_from').value);
+        const toFactor = parseFloat(document.getElementById('metric_to').value);
+
+        const baseVal = val * fromFactor;
+        const finalVal = baseVal / toFactor;
+
+        document.getElementById('metric_result').innerText = `Converted Result: ${finalVal.toLocaleString('en-US', {maximumFractionDigits: 4})}`;
+    }
+
+    function convertInterSystem() {
+        const val = parseFloat(document.getElementById('inter_val').value) || 0;
+        const type = document.getElementById('inter_type').value;
+        let result = 0;
+        let unit = '';
+
+        switch (type) {
+            case 'mi_km':
+                result = val * 1.60934;
+                unit = 'km';
+                break;
+            case 'km_mi':
+                result = val / 1.60934;
+                unit = 'miles';
+                break;
+            case 'lb_kg':
+                result = val * 0.453592;
+                unit = 'kg';
+                break;
+            case 'kg_lb':
+                result = val / 0.453592;
+                unit = 'lbs';
+                break;
+            case 'gal_l':
+                result = val * 3.78541;
+                unit = 'L';
+                break;
+            case 'l_gal':
+                result = val / 3.78541;
+                unit = 'gallons';
+                break;
+        }
+
+        document.getElementById('inter_result').innerText = `Converted Result: ${result.toLocaleString('en-US', {maximumFractionDigits: 4})} ${unit}`;
+    }
+
+    // Dynamic Download Function
+    function downloadPage() {
+        const htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+        const blob = new Blob([htmlContent], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Measurement_Systems_and_Conversions.html';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+</script>
+
+</body>
+</html>
