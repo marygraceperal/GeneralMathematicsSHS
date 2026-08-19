@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worked Examples: Unit Conversions</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="mathjax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper-bg: #fffdf8;
+            --line-color: #e2ebf3;
+            --margin-line: #ff9aa2;
+            --ink-blue: #1a365d;
+            --pencil-gray: #4a5568;
+            --highlight-yellow: #fff9c4;
+            --box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            font-family: 'Patrick Hand', cursive, sans-serif;
+            background-color: #f0f4f8;
+            color: var(--ink-blue);
+            line-height: 1.8;
+            font-size: 1.25rem;
+            margin: 0;
+            padding: 30px 15px;
+        }
+
+        .notebook-page {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--paper-bg);
+            /* Lined paper effect */
+            background-image: 
+                linear-gradient(90deg, transparent 79px, var(--margin-line) 79px, var(--margin-line) 81px, transparent 81px),
+                linear-gradient(var(--line-color) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 2rem;
+            padding: 40px 40px 50px 100px;
+            border-radius: 8px;
+            box-shadow: var(--box-shadow);
+            position: relative;
+            border: 1px solid #e0e0e0;
+        }
+
+        /* Binder Holes Effect */
+        .notebook-page::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 25px;
+            bottom: 40px;
+            width: 20px;
+            background-image: radial-gradient(circle, #d0d0d0 40%, transparent 42%);
+            background-size: 20px 80px;
+        }
+
+        header {
+            border-bottom: 2px dashed var(--ink-blue);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-family: 'Caveat', cursive;
+            font-size: 2.8rem;
+            margin: 0;
+            color: #2b6cb0;
+            text-transform: capitalize;
+        }
+
+        .subtitle {
+            font-family: 'Kalam', cursive;
+            color: var(--pencil-gray);
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+
+        h2 {
+            font-family: 'Kalam', cursive;
+            color: #2c5282;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--ink-blue);
+            display: inline-block;
+            margin-top: 35px;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            font-family: 'Caveat', cursive;
+            font-size: 1.6rem;
+            color: #2b6cb0;
+            margin-top: 25px;
+            margin-bottom: 5px;
+        }
+
+        .factor-note {
+            font-family: 'Patrick Hand', cursive;
+            background-color: var(--highlight-yellow);
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: #744210;
+        }
+
+        .example-card {
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 1px dashed #cbd5e0;
+            border-left: 4px solid #4299e1;
+            padding: 12px 18px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .example-title {
+            font-weight: bold;
+            color: #2b6cb0;
+        }
+
+        /* Action Bar for Printing/Offline */
+        .action-bar {
+            text-align: right;
+            margin-bottom: 15px;
+        }
+
+        .action-btn {
+            font-family: 'Patrick Hand', cursive;
+            background: #4299e1;
+            color: white;
+            border: none;
+            padding: 6px 16px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .action-btn:hover {
+            background: #2b6cb0;
+        }
+
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .notebook-page {
+                box-shadow: none;
+                border: none;
+                max-width: 100%;
+                padding: 20px 20px 20px 80px;
+            }
+            .action-bar {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .notebook-page {
+                padding: 30px 20px 30px 50px;
+                background-image: 
+                    linear-gradient(90deg, transparent 39px, var(--margin-line) 39px, var(--margin-line) 41px, transparent 41px),
+                    linear-gradient(var(--line-color) 1px, transparent 1px);
+            }
+            .notebook-page::before {
+                left: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="notebook-page">
+    <div class="action-bar">
+        <button class="action-btn" onclick="window.print()">🖨️ Print / Save PDF</button>
+    </div>
+
+    <header>
+        <h1>✏️ Step-by-Step Unit Conversions</h1>
+        <div class="subtitle">Math Study Guide: Worked Examples for Each Unit Type</div>
+    </header>
+
+    <!-- SECTION 1 -->
+    <section>
+        <h2>1. Metric System Conversions</h2>
+
+        <h3>A. Kilometers to Meters (\(\text{km} \rightarrow \text{m}\))</h3>
+        <div class="factor-note">Conversion Factor: \(1 \text{ km} = 1,000 \text{ m}\)</div>
+        <div class="example-card">
+            <span class="example-title">Example 1:</span> Convert \(3.2 \text{ km}\) to meters.<br>
+            \(3.2 \text{ km} \times \frac{1,000 \text{ m}}{1 \text{ km}} = \mathbf{3,200 \text{ m}}\)
+        </div>
+        <div class="example-card">
+            <span class="example-title">Example 2:</span> Convert \(0.75 \text{ km}\) to meters.<br>
+            \(0.75 \text{ km} \times \frac{1,000 \text{ m}}{1 \text{ km}} = \mathbf{750 \text{ m}}\)
+        </div>
+
+        <h3>B. Meters to Centimeters (\(\text{m} \rightarrow \text{cm}\))</h3>
+        <div class="factor-note">Conversion Factor: \(1 \text{ m} = 100 \text{ cm}\)</div>
+        <div class="example-card">
+            <span class="example-title">Example 1:</span> Convert \(2.5 \text{ m}\) to centimeters.<br>
+            \(2.5 \text{ m} \times \frac{100 \text{ cm}}{1 \text{ m}} = \mathbf{250 \text{ cm}}\)
+        </div>
+        <div class="example-card">
+            <span class="example-title">Example 2:</span> Convert \(0.18 \text{ m}\) to centimeters.<br>
+            \(0.18 \text{ m} \times \frac{100 \text{ cm}}{1 \text{ m}} = \mathbf{18 \text{ cm}}\)
+        </div>
+
+        <h3>C. Grams to Milligrams (\(\text{g} \rightarrow \text{mg}\))</h3>
+        <div class="factor-note">Conversion Factor: \(1 \text{ g} = 1,000 \text{ mg}\)</div>
+        <div class="example-card">
+            <span class="example-title">Example 1:</span> Convert \(5 \text{ g}\) to milligrams.<br>
+            \(5 \text{ g} \times \frac{1,000 \text{ mg}}{1 \text{ g}} = \mathbf{5,000 \text{ mg}}\)
+        </div>
+        <div class="example-card">
+            <span class="example-title">Example 2:</span> Convert \(0.42 \text{ g}\) to milligrams.<br>
+            \(0.42 \text{ g} \times \frac{1,000 \text{ mg}}{1 \text{ g}} = \mathbf{420 \text{ mg}}\)
+        </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section>
+        <h2>2. US Customary Conversions</h2>
+
+        <h3>A. Feet to Inches (\(\text{ft} \rightarrow \text{in}\))</h3>
+        <div class="factor-note">Conversion Factor: \(1 \text{ ft} = 12 \text{ in}\)</div>
+        <div class="example-card">
+            <span class="example-title">Example 1:</span> Convert \(6 \text{ ft}\) to inches.<br>
+            \(6 \text{ ft} \times \frac{12 \text{ in}}{1 \text{ ft}} = \mathbf{72 \text{ in}}\)
+        </div>
+        <div class="example-card">
+            <span class="example-title">Example 2:</span> Convert \(4.5 \text{ ft}\) to inches.<br>
+            \(4.5 \text{ ft} \times \frac{12 \text{ in}}{1 \text{ ft}} = \mathbf{54 \text{ in}}\)
+        </div>
+
+        <h3>B. Pounds to Ounces (\(\text{lb} \rightarrow \text{oz}\))</h3>
+        <div class="factor-note">Conversion Factor: \(1 \text{ lb} = 16 \text{ oz}\)</div>
+        <div class="example-card">
+            <span class="example-title">Example 1:</span> Convert \(3 \text{ lb}\) to ounces.<br>
+            \(3 \text{ lb} \times \frac{16 \text{ oz}}{1 \text{ lb}} = \mathbf{48 \text{ oz}}\)
+        </div>
+        <div class="example-card">
+            <span class="example-title">Example 2:</span> Convert \(2.25 \text{ lb}\) to ounces.<br>
+            \(2.25 \text{ lb} \times \frac{16 \text{ oz}}{1 \text{ lb}} = \mathbf{36 \text{ oz}}\)
+        </div>
+
+        <h3>C. Gallons to Quarts (\(\text{gal} \rightarrow \text{qt}\))</h3>
+        <div class="factor-note">Conversion Factor: \(1 \text{ gal} = 4 \text{ qt}\)</div>
+        <div class="example-card">
+            <span class="example-title">Example 1:</span> Convert \(4 \text{ gal}\) to quarts.<br>
+            \(4 \text{ gal} \times \frac{4 \text{ qt}}{1 \text{ gal}} = \mathbf{16 \text{ qt}}\)
+        </div>
+        <div class="example-card">
+            <span class="example-title">Example 2:</span> Convert \(1.5 \text{ gal}\) to quarts.<br>
+            \(1.5 \text{ gal} \times \frac{4 \text{ qt}}{1 \text{ gal}} = \mathbf{6 \text{ qt}}\)
+        </div>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section>
+        <h2>3. Inter-System Conversions (Customary \(\leftrightarrow\) Metric)</h2>
+
+        <h3>A. Miles to Kilometers (\(\text{mi} \rightarrow \text{km}\))</h3>
+        <div class="factor-note">Conversion Factor: \(1 \text{ mi} \approx 1.60934 \text{ km}\)</div>
+        <div class="example-card">
+            <span class="example-title">Example 1:</span> Convert \(10 \text{ mi}\) to kilometers.<br>
+            \(10 \text{ mi} \times 1.60934 = \mathbf{16.0934 \text{ km}}\)
+        </div>
+        <div class="example-card">
+            <span class="example-title">Example 2:</span> Convert a marathon distance of \(26.2 \text{ mi}\) to kilometers.<br>
+            \(26.2 \text{ mi} \times 1.60934 = \mathbf{42.1647 \text{ km}}\)
+        </div>
+
+        <h3>B. Kilometers to Miles (\(\text{km} \rightarrow \text{mi}\))</h3>
+        <div class="factor-note">Conversion Factor: \(1 \text{ km} \approx 0.621371 \text{ mi}\)</div>
+        <div class="example-card">
+            <span class="example-title">Example 1:</span> Convert a \(5 \text{ km}\) run to miles.<br>
+            \(5 \text{ km} \times 0.621371 = \mathbf{3.10686 \text{ mi}}\)
+        </div>
+        <div class="example-card">
+            <span class="example-title">Example 2:</span> Convert \(100 \text{ km}\) to miles.<br>
+            \(100 \text{ km} \times 0.621371 = \mathbf{62.1371 \text{ mi}}\)
+        </div>
+
+        <h3>C. Pounds to Kilograms (\(\text{lb} \rightarrow \text{kg}\))</h3>
+        <div class="factor-note">Conversion Factor: \(1 \text{ lb} \approx 0.453592 \text{ kg}\)</div>
+        <div class="example-card">
+            <span class="example-title">Example 1:</span> Convert \(150 \text{ lb}\) to kilograms.<br>
+            \(150 \text{ lb} \times 0.453592 = \mathbf{68.0388 \text{ kg}}\)
+        </div>
+        <div class="example-card">
+            <span class="example-title">Example 2:</span> Convert \(12 \text{ lb}\) to kilograms.<br>
+            \(12 \text{ lb} \times 0.453592 = \mathbf{5.4431 \text{ kg}}\)
+        </div>
+
+        <h3>D. Kilograms to Pounds (\(\text{kg} \rightarrow \text{lb}\))</h3>
+        <div class="factor-note">Conversion Factor: \(1 \text{ kg} \approx 2.20462 \text{ lb}\)</div>
+        <div class="example-card">
+            <span class="example-title">Example 1:</span> Convert \(70 \text{ kg}\) to pounds.<br>
+            \(70 \text{ kg} \times 2.20462 = \mathbf{154.3234 \text{ lb}}\)
+        </div>
+        <div class="example-card">
+            <span class="example-title">Example 2:</span> Convert \(2.5 \text{ kg}\) to pounds.<br>
+            \(2.5 \text{ kg} \times 2.20462 = \mathbf{5.51155 \text{ lb}}\)
+        </div>
+
+        <h3>E. Gallons to Liters (\(\text{gal} \rightarrow \text{L}\))</h3>
+        <div class="factor-note">Conversion Factor: \(1 \text{ gal} \approx 3.78541 \text{ L}\)</div>
+        <div class="example-card">
+            <span class="example-title">Example 1:</span> Convert \(2 \text{ gal}\) to liters.<br>
+            \(2 \text{ gal} \times 3.78541 = \mathbf{7.57082 \text{ L}}\)
+        </div>
+        <div class="example-card">
+            <span class="example-title">Example 2:</span> Convert \(12 \text{ gal}\) to liters.<br>
+            \(12 \text{ gal} \times 3.78541 = \mathbf{45.4249 \text{ L}}\)
+        </div>
+
+        <h3>F. Liters to Gallons (\(\text{L} \rightarrow \text{gal}\))</h3>
+        <div class="factor-note">Conversion Factor: \(1 \text{ L} \approx 0.264172 \text{ gal}\)</div>
+        <div class="example-card">
+            <span class="example-title">Example 1:</span> Convert \(10 \text{ L}\) to gallons.<br>
+            \(10 \text{ L} \times 0.264172 = \mathbf{2.64172 \text{ gal}}\)
+        </div>
+        <div class="example-card">
+            <span class="example-title">Example 2:</span> Convert \(50 \text{ L}\) to gallons.<br>
+            \(50 \text{ L} \times 0.264172 = \mathbf{13.2086 \text{ gal}}\)
+        </div>
+
+        <h3>G. Inches to Centimeters (\(\text{in} \rightarrow \text{cm}\))</h3>
+        <div class="factor-note">Conversion Factor: \(1 \text{ in} = 2.54 \text{ cm}\)</div>
+        <div class="example-card">
+            <span class="example-title">Example 1:</span> Convert \(10 \text{ in}\) to centimeters.<br>
+            \(10 \text{ in} \times 2.54 = \mathbf{25.4 \text{ cm}}\)
+        </div>
+        <div class="example-card">
+            <span class="example-title">Example 2:</span> Convert \(5.5 \text{ in}\) to centimeters.<br>
+            \(5.5 \text{ in} \times 2.54 = \mathbf{13.97 \text{ cm}}\)
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
