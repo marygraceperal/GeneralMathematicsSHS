@@ -85,6 +85,45 @@
             font-size: 1.15rem;
         }
 
+        /* External Link Resource Box */
+        .external-resource-box {
+            background: #ffffff;
+            border: 1px solid var(--secondary);
+            border-left: 5px solid var(--secondary);
+            border-radius: 8px;
+            padding: 12px 18px;
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .external-resource-box p {
+            margin: 0;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .external-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: var(--secondary);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .external-link-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
         /* Calculator Styles */
         .calculator-section {
             background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
@@ -316,7 +355,7 @@
                 padding: 0;
                 max-width: 100%;
             }
-            .action-bar-container, .print-btn {
+            .action-bar-container, .print-btn, .external-resource-box {
                 display: none !important;
             }
             .calculator-section {
@@ -478,7 +517,23 @@
         </li>
     </ul>
 
+    <!-- Integrated Customary Units Link -->
+    <div class="external-resource-box">
+        <p>📏 Need an in-depth reference guide for Customary Unit Conversions?</p>
+        <a href="https://marygraceperal.github.io/GeneralMathematicsSHS/MetricUnitsCustomary.html" target="_blank" class="external-link-btn">
+            Open Customary Units Sheet ↗
+        </a>
+    </div>
+
     <h2>3. Step-by-Step Conversion Examples</h2>
+
+    <!-- Integrated Conversion Examples Link -->
+    <div class="external-resource-box">
+        <p>📚 Looking for additional worked examples & problem sets?</p>
+        <a href="https://marygraceperal.github.io/GeneralMathematicsSHS/MetricUnitsExamples.html" target="_blank" class="external-link-btn">
+            View Extended Conversion Examples ↗
+        </a>
+    </div>
 
     <h3>A. Intra-System Conversions (Metric to Metric)</h3>
     <div class="example-card">
