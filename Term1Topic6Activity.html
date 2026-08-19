@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Sheet: Unit Conversions & Practice Problems</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="mathjax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --primary-color: #7e22ce;
+            --primary-light: #f3e8ff;
+            --secondary-color: #581c87;
+            --text-dark: #1e293b;
+            --bg-light: #faf5ff;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --accent-purple: #6b21a8;
+            --accent-purple-bg: #f3e8ff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        header {
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .header-title-box {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+            font-size: 1.8em;
+        }
+
+        .download-btn {
+            background-color: var(--accent-purple);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.9em;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .download-btn:hover {
+            background-color: #581c87;
+            transform: translateY(-1px);
+        }
+
+        .download-btn:active {
+            transform: translateY(0);
+        }
+
+        .download-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        .instructions-box {
+            background-color: var(--primary-light);
+            border-left: 5px solid var(--primary-color);
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .guide-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0 25px 0;
+            font-size: 0.9em;
+        }
+
+        .guide-table th, .guide-table td {
+            border: 1px solid #e9d5ff;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .guide-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .problem-card {
+            background: #fff;
+            border: 1px solid #f3e8ff;
+            border-top: 4px solid var(--secondary-color);
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+        }
+
+        .problem-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .answer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .method-box {
+            background: #faf5ff;
+            border: 1px dashed #d8b4fe;
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        .method-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .calc-widget {
+            background-color: #ffffff;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .calc-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .calc-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .calc-group label {
+            font-size: 0.85em;
+            font-weight: bold;
+            color: #475569;
+            margin-bottom: 4px;
+        }
+
+        .calc-group input, .calc-group select {
+            padding: 8px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .calc-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            font-size: 0.95em;
+            transition: background 0.2s;
+        }
+
+        .calc-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .calc-result {
+            margin-top: 15px;
+            background-color: var(--accent-purple-bg);
+            border: 1px solid var(--accent-purple);
+            color: var(--accent-purple);
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .answer-key-section {
+            margin-top: 40px;
+            background: #ffffff;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .passcode-box {
+            display: flex;
+            gap: 10px;
+            max-width: 400px;
+            margin: 15px 0;
+        }
+
+        .passcode-box input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1em;
+        }
+
+        .key-content {
+            display: none;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px dashed var(--primary-color);
+        }
+
+        .error-msg {
+            color: #dc2626;
+            font-weight: bold;
+            display: none;
+            margin-top: 5px;
+        }
+
+        code {
+            background-color: #f3e8ff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+            color: #581c87;
+        }
+
+        @media (max-width: 600px) {
+            .answer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="header-title-box">
+            <h1>📝 Activity Sheet: Unit Conversion Practice Set</h1>
+            <p style="margin: 0; color: #64748b;">Mathematics & Measurement — Metric, US Customary & Inter-System Conversions</p>
+        </div>
+        <button class="download-btn" onclick="downloadHTMLFile()">
+            <svg viewBox="0 0 24 24">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+            </svg>
+            Download for Offline Use
+        </button>
+    </header>
+
+    <div class="instructions-box">
+        <strong>📋 General Instructions:</strong>
+        <ol style="margin-bottom: 0; padding-left: 20px;">
+            <li>Solve each problem using dimensional analysis or step-by-step ratio calculations.</li>
+            <li>Use the reference table below for exact conversion factors.</li>
+            <li>Use the <strong>Live Practice Verification Calculator</strong> embedded below to verify your answer outputs!</li>
+        </ol>
+    </div>
+
+    <h3 style="color: var(--secondary-color);">📖 Quick Reference: Conversion Factors</h3>
+    <table class="guide-table">
+        <thead>
+            <tr>
+                <th>Conversion Category</th>
+                <th>Units / Direction</th>
+                <th>Standard Conversion Factor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Metric Length & Mass</strong></td>
+                <td>\(\text{km} \rightarrow \text{m}\), \(\text{m} \rightarrow \text{cm}\), \(\text{g} \rightarrow \text{mg}\)</td>
+                <td>\(1 \text{ km} = 1,000 \text{ m}\), \(1 \text{ m} = 100 \text{ cm}\), \(1 \text{ g} = 1,000 \text{ mg}\)</td>
+            </tr>
+            <tr>
+                <td><strong>US Customary Units</strong></td>
+                <td>\(\text{ft} \rightarrow \text{in}\), \(\text{lb} \rightarrow \text{oz}\), \(\text{gal} \rightarrow \text{qt}\)</td>
+                <td>\(1 \text{ ft} = 12 \text{ in}\), \(1 \text{ lb} = 16 \text{ oz}\), \(1 \text{ gal} = 4 \text{ qt}\)</td>
+            </tr>
+            <tr>
+                <td><strong>Inter-System Conversions</strong></td>
+                <td>\(\text{mi} \leftrightarrow \text{km}\), \(\text{lb} \leftrightarrow \text{kg}\), \(\text{gal} \leftrightarrow \text{L}\), \(\text{in} \rightarrow \text{cm}\)</td>
+                <td>\(1 \text{ mi} \approx 1.60934 \text{ km}\), \(1 \text{ kg} \approx 2.20462 \text{ lb}\)<br>\(1 \text{ L} \approx 0.264172 \text{ gal}\), \(1 \text{ in} = 2.54 \text{ cm}\)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Live Calculator Widget -->
+    <div class="calc-widget">
+        <div class="calc-title">🧮 Embedded Live Unit Conversion Calculator</div>
+        <div class="calc-grid">
+            <div class="calc-group">
+                <label>Select Conversion Type:</label>
+                <select id="calc_type">
+                    <option value="km_m">Kilometers (km) ➔ Meters (m)</option>
+                    <option value="gal_qt">Gallons (gal) ➔ Quarts (qt)</option>
+                    <option value="kg_lb">Kilograms (kg) ➔ Pounds (lb)</option>
+                    <option value="m_cm">Meters (m) ➔ Centimeters (cm)</option>
+                    <option value="lb_oz">Pounds (lb) ➔ Ounces (oz)</option>
+                    <option value="mi_km">Miles (mi) ➔ Kilometers (km)</option>
+                    <option value="g_mg">Grams (g) ➔ Milligrams (mg)</option>
+                    <option value="in_cm">Inches (in) ➔ Centimeters (cm)</option>
+                    <option value="l_gal">Liters (L) ➔ Gallons (gal)</option>
+                    <option value="ft_in">Feet (ft) ➔ Inches (in)</option>
+                </select>
+            </div>
+            <div class="calc-group">
+                <label>Input Value:</label>
+                <input type="number" id="calc_input" placeholder="e.g. 10" step="any">
+            </div>
+        </div>
+        <button class="calc-btn" onclick="runConversionCalculator()">Verify Answer</button>
+        <div class="calc-result" id="conversion_calc_result">Enter a value above and click 'Verify Answer'</div>
+    </div>
+
+    <!-- PRACTICE PROBLEMS -->
+
+    <!-- Task 1 -->
+    <div class="problem-card">
+        <div class="problem-title">Task 1: Distance Conversion (Metric)</div>
+        <p><strong>Problem Scenario:</strong> A track-and-field athlete runs a distance of <strong>\(0.85 \text{ km}\)</strong>. Convert this distance into meters (\(\text{m}\)).</p>
+        <div class="answer-grid">
+            <div class="method-box">
+                <div class="method-title">A. Given & Formula Identification</div>
+                <p>Given value: _____________<br>Conversion Factor: \(1 \text{ km} = 1,000 \text{ m}\)</p>
+            </div>
+            <div class="method-box">
+                <div class="method-title">B. Solution & Final Output</div>
+                <p>Calculation: <br>\(0.85 \times 1,000 = \) _________________</p>
+                <p><strong>Final Answer:</strong> _________________ \(\text{m}\)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Task 2 -->
+    <div class="problem-card">
+        <div class="problem-title">Task 2: Liquid Capacity (Customary)</div>
+        <p><strong>Problem Scenario:</strong> A recipe requires <strong>\(2.5 \text{ gallons}\)</strong> of water for a large batch of soup. How many quarts (\(\text{qt}\)) does this equal?</p>
+        <div class="answer-grid">
+            <div class="method-box">
+                <div class="method-title">A. Given & Formula Identification</div>
+                <p>Given value: _____________<br>Conversion Factor: \(1 \text{ gal} = 4 \text{ qt}\)</p>
+            </div>
+            <div class="method-box">
+                <div class="method-title">B. Solution & Final Output</div>
+                <p>Calculation: <br>\(2.5 \times 4 = \) _________________</p>
+                <p><strong>Final Answer:</strong> _________________ \(\text{qt}\)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Task 3 -->
+    <div class="problem-card">
+        <div class="problem-title">Task 3: Weight/Mass (Inter-System)</div>
+        <p><strong>Problem Scenario:</strong> A delivery crate has a total mass of <strong>\(45 \text{ kg}\)</strong>. What is its equivalent weight in pounds (\(\text{lb}\))? <em>(Use \(1 \text{ kg} \approx 2.20462 \text{ lb}\))</em></p>
+        <div class="answer-grid">
+            <div class="method-box">
+                <div class="method-title">A. Given & Formula Identification</div>
+                <p>Given value: _____________<br>Conversion Factor: \(1 \text{ kg} = 2.20462 \text{ lb}\)</p>
+            </div>
+            <div class="method-box">
+                <div class="method-title">B. Solution & Final Output</div>
+                <p>Calculation: <br>\(45 \times 2.20462 = \) _________________</p>
+                <p><strong>Final Answer:</strong> _________________ \(\text{lb}\)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Task 4 -->
+    <div class="problem-card">
+        <div class="problem-title">Task 4: Length Measurement (Metric)</div>
+        <p><strong>Problem Scenario:</strong> A wooden plank measures <strong>\(3.4 \text{ meters}\)</strong> in length. Express this measurement in centimeters (\(\text{cm}\)).</p>
+        <div class="answer-grid">
+            <div class="method-box">
+                <div class="method-title">A. Given & Formula Identification</div>
+                <p>Given value: _____________<br>Conversion Factor: \(1 \text{ m} = 100 \text{ cm}\)</p>
+            </div>
+            <div class="method-box">
+                <div class="method-title">B. Solution & Final Output</div>
+                <p>Calculation: <br>\(3.4 \times 100 = \) _________________</p>
+                <p><strong>Final Answer:</strong> _________________ \(\text{cm}\)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Task 5 -->
+    <div class="problem-card">
+        <div class="problem-title">Task 5: Weight Measurement (Customary)</div>
+        <p><strong>Problem Scenario:</strong> A package weighs <strong>\(3.75 \text{ pounds}\)</strong>. Convert its weight into ounces (\(\text{oz}\)).</p>
+        <div class="answer-grid">
+            <div class="method-box">
+                <div class="method-title">A. Given & Formula Identification</div>
+                <p>Given value: _____________<br>Conversion Factor: \(1 \text{ lb} = 16 \text{ oz}\)</p>
+            </div>
+            <div class="method-box">
+                <div class="method-title">B. Solution & Final Output</div>
+                <p>Calculation: <br>\(3.75 \times 16 = \) _________________</p>
+                <p><strong>Final Answer:</strong> _________________ \(\text{oz}\)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Task 6 -->
+    <div class="problem-card">
+        <div class="problem-title">Task 6: Road Distance (Inter-System)</div>
+        <p><strong>Problem Scenario:</strong> A driver travels <strong>\(42 \text{ miles}\)</strong> along a coastal road. Convert this distance into kilometers (\(\text{km}\)). <em>(Use \(1 \text{ mi} \approx 1.60934 \text{ km}\))</em></p>
+        <div class="answer-grid">
+            <div class="method-box">
+                <div class="method-title">A. Given & Formula Identification</div>
+                <p>Given value: _____________<br>Conversion Factor: \(1 \text{ mi} = 1.60934 \text{ km}\)</p>
+            </div>
+            <div class="method-box">
+                <div class="method-title">B. Solution & Final Output</div>
+                <p>Calculation: <br>\(42 \times 1.60934 = \) _________________</p>
+                <p><strong>Final Answer:</strong> _________________ \(\text{km}\)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Task 7 -->
+    <div class="problem-card">
+        <div class="problem-title">Task 7: Small Scale Mass (Metric)</div>
+        <p><strong>Problem Scenario:</strong> A science experiment requires <strong>\(0.35 \text{ grams}\)</strong> of a chemical compound. How many milligrams (\(\text{mg}\)) is this?</p>
+        <div class="answer-grid">
+            <div class="method-box">
+                <div class="method-title">A. Given & Formula Identification</div>
+                <p>Given value: _____________<br>Conversion Factor: \(1 \text{ g} = 1,000 \text{ mg}\)</p>
+            </div>
+            <div class="method-box">
+                <div class="method-title">B. Solution & Final Output</div>
+                <p>Calculation: <br>\(0.35 \times 1,000 = \) _________________</p>
+                <p><strong>Final Answer:</strong> _________________ \(\text{mg}\)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Task 8 -->
+    <div class="problem-card">
+        <div class="problem-title">Task 8: Height Measurement (Inter-System)</div>
+        <p><strong>Problem Scenario:</strong> A desk monitor has a screen diagonal of <strong>\(24 \text{ inches}\)</strong>. Convert this length into centimeters (\(\text{cm}\)). <em>(Use \(1 \text{ in} = 2.54 \text{ cm}\))</em></p>
+        <div class="answer-grid">
+            <div class="method-box">
+                <div class="method-title">A. Given & Formula Identification</div>
+                <p>Given value: _____________<br>Conversion Factor: \(1 \text{ in} = 2.54 \text{ cm}\)</p>
+            </div>
+            <div class="method-box">
+                <div class="method-title">B. Solution & Final Output</div>
+                <p>Calculation: <br>\(24 \times 2.54 = \) _________________</p>
+                <p><strong>Final Answer:</strong> _________________ \(\text{cm}\)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Task 9 -->
+    <div class="problem-card">
+        <div class="problem-title">Task 9: Liquid Volume (Inter-System)</div>
+        <p><strong>Problem Scenario:</strong> A container holds <strong>\(15 \text{ liters}\)</strong> of juice. How many gallons (\(\text{gal}\)) can it fill? <em>(Use \(1 \text{ L} \approx 0.264172 \text{ gal}\))</em></p>
+        <div class="answer-grid">
+            <div class="method-box">
+                <div class="method-title">A. Given & Formula Identification</div>
+                <p>Given value: _____________<br>Conversion Factor: \(1 \text{ L} = 0.264172 \text{ gal}\)</p>
+            </div>
+            <div class="method-box">
+                <div class="method-title">B. Solution & Final Output</div>
+                <p>Calculation: <br>\(15 \times 0.264172 = \) _________________</p>
+                <p><strong>Final Answer:</strong> _________________ \(\text{gal}\)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Task 10 -->
+    <div class="problem-card">
+        <div class="problem-title">Task 10: Height in Customary Units</div>
+        <p><strong>Problem Scenario:</strong> A wooden beam is cut to a length of <strong>\(7.5 \text{ feet}\)</strong>. What is its length in inches (\(\text{in}\))?</p>
+        <div class="answer-grid">
+            <div class="method-box">
+                <div class="method-title">A. Given & Formula Identification</div>
+                <p>Given value: _____________<br>Conversion Factor: \(1 \text{ ft} = 12 \text{ in}\)</p>
+            </div>
+            <div class="method-box">
+                <div class="method-title">B. Solution & Final Output</div>
+                <p>Calculation: <br>\(7.5 \times 12 = \) _________________</p>
+                <p><strong>Final Answer:</strong> _________________ \(\text{in}\)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECURED ANSWER KEY SECTION -->
+    <div class="answer-key-section">
+        <h3 style="color: var(--primary-color); margin-top: 0;">🔒 Secured Teacher Answer Key</h3>
+        <p style="font-size: 0.9em; color: #64748b;">Enter the passcode to unlock step-by-step solutions for all 10 problems.</p>
+        
+        <div class="passcode-box">
+            <input type="password" id="passcode_input" placeholder="Enter Passcode">
+            <button class="calc-btn" style="width: auto;" onclick="unlockAnswerKey()">Unlock</button>
+        </div>
+        <div class="error-msg" id="passcode_error">Incorrect passcode. Access denied.</div>
+
+        <div class="key-content" id="key_content">
+            <h4 style="color: var(--secondary-color);">Step-by-Step Solutions & Key:</h4>
+            <ul>
+                <li><strong>Task 1:</strong> \(0.85 \text{ km} \times \frac{1,000 \text{ m}}{1 \text{ km}} = \mathbf{850 \text{ m}}\)</li>
+                <li><strong>Task 2:</strong> \(2.5 \text{ gal} \times \frac{4 \text{ qt}}{1 \text{ gal}} = \mathbf{10 \text{ qt}}\)</li>
+                <li><strong>Task 3:</strong> \(45 \text{ kg} \times 2.20462 = \mathbf{99.21 \text{ lb}}\) <em>(or 99.2079 lb)</em></li>
+                <li><strong>Task 4:</strong> \(3.4 \text{ m} \times \frac{100 \text{ cm}}{1 \text{ m}} = \mathbf{340 \text{ cm}}\)</li>
+                <li><strong>Task 5:</strong> \(3.75 \text{ lb} \times \frac{16 \text{ oz}}{1 \text{ lb}} = \mathbf{60 \text{ oz}}\)</li>
+                <li><strong>Task 6:</strong> \(42 \text{ mi} \times 1.60934 = \mathbf{67.59 \text{ km}}\) <em>(or 67.5923 km)</em></li>
+                <li><strong>Task 7:</strong> \(0.35 \text{ g} \times \frac{1,000 \text{ mg}}{1 \text{ g}} = \mathbf{350 \text{ mg}}\)</li>
+                <li><strong>Task 8:</strong> \(24 \text{ in} \times 2.54 = \mathbf{60.96 \text{ cm}}\)</li>
+                <li><strong>Task 9:</strong> \(15 \text{ L} \times 0.264172 = \mathbf{3.96 \text{ gal}}\) <em>(or 3.96258 gal)</em></li>
+                <li><strong>Task 10:</strong> \(7.5 \text{ ft} \times \frac{12 \text{ in}}{1 \text{ ft}} = \mathbf{90 \text{ in}}\)</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function runConversionCalculator() {
+        const type = document.getElementById('calc_type').value;
+        const val = parseFloat(document.getElementById('calc_input').value);
+
+        if (isNaN(val)) {
+            document.getElementById('conversion_calc_result').innerText = 'Please enter a valid numerical value.';
+            return;
+        }
+
+        let result = 0;
+        let unit = '';
+
+        switch (type) {
+            case 'km_m': result = val * 1000; unit = 'm'; break;
+            case 'gal_qt': result = val * 4; unit = 'qt'; break;
+            case 'kg_lb': result = val * 2.20462; unit = 'lb'; break;
+            case 'm_cm': result = val * 100; unit = 'cm'; break;
+            case 'lb_oz': result = val * 16; unit = 'oz'; break;
+            case 'mi_km': result = val * 1.60934; unit = 'km'; break;
+            case 'g_mg': result = val * 1000; unit = 'mg'; break;
+            case 'in_cm': result = val * 2.54; unit = 'cm'; break;
+            case 'l_gal': result = val * 0.264172; unit = 'gal'; break;
+            case 'ft_in': result = val * 12; unit = 'in'; break;
+        }
+
+        const formatted = Number.isInteger(result) ? result : result.toFixed(4);
+        document.getElementById('conversion_calc_result').innerText = `Verified Result: ${val} ➔ ${formatted} ${unit}`;
+    }
+
+    function unlockAnswerKey() {
+        const input = document.getElementById('passcode_input').value;
+        const errorMsg = document.getElementById('passcode_error');
+        const keyContent = document.getElementById('key_content');
+
+        if (input === '01011.6') {
+            keyContent.style.display = 'block';
+            errorMsg.style.display = 'none';
+            if (window.MathJax) {
+                MathJax.typesetPromise([keyContent]);
+            }
+        } else {
+            errorMsg.style.display = 'block';
+            keyContent.style.display = 'none';
+        }
+    }
+
+    function downloadHTMLFile() {
+        const htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+        const blob = new Blob([htmlContent], { type: "text/html;charset=utf-8" });
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "Activity_Sheet_Unit_Conversions.html";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(a.href);
+    }
+</script>
+
+</body>
+</html>
